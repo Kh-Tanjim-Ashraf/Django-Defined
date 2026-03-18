@@ -1,0 +1,48 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+
+# Django-specific
+*.log
+*.pot
+local_settings.py # For sensitive local configurations
+db.sqlite3 # Default SQLite database file
+media/ # Directory for user-uploaded media files
+
+# OS and Editor-specific files
+.DS_Store # macOS files
+.idea/ # PyCharm files
+.vscode/ # VS Code files (only personal settings, project settings can be kept)
+ehthumbs.db # Windows thumbnail caches
+Thumbs.db
+
+# Other
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+docs/_build/
+target/
+*.sqlite3
