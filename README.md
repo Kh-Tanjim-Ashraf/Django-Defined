@@ -11,3 +11,6 @@
 > pip install django-extensions
 5. Use the following command to execute the python script.
 > python manage.py runscript <script_file_name>
+
+## The '<model>.save()' Method
+The __<model>.save()__ method used for both creating and updating record for database
