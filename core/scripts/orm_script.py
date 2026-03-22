@@ -6,8 +6,9 @@ from pprint import pprint
 
 
 def run():
-    # Fetch & return a single record, based on passing the value(s) in the model-field(s)
-    rating = Rating.objects.get(rating=3)
-    pprint(rating)
+    # Fetch all the ratings of a specific restaurant; using the '{main_model}.{model}_set.all()' manager
+    restaurant = Restaurant.objects.first()
+    ratings = restaurant.rating_set.all()
+    pprint(ratings)
 
     pprint(connection.queries) # print out all the SQL queries

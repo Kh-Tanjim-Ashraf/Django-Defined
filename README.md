@@ -79,3 +79,15 @@ The '<b>.get()</b>' method returns a class instance of a record which meet the c
 <br/>
 <small><b>Note:</b> If a record contains any foreign key data, then that can be called without executing another ORM query, since they (_foreign keys_) are being fetched at the first ORM query execution.</small>
 <small>[Commit Link]()</small>
+
+
+## Querying Reverse Relation in Django ORM
+### Method-1: Using '{model}_set' Manager
+If a model has a <b>ForeignKey</b>, and we want to access the instances of that foreign-key-model, then we can use default <b>Manager</b> called `{model}_set`.
+<br/>
+<small><b>ie.</b> If we want to retrieve all the records of rating for a specific restaurant, just by using the restaurant instance, where the rating table has restaurant as foreign-key, we will use the following ORM query:
+<br/>
+> restaurant = Restaurant.objects.first() <br/>
+ratings = restaurant.rating_set.all() <br/>
+print(ratings)
+</small>
