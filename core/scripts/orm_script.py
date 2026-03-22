@@ -1,12 +1,10 @@
 from core.models import Restaurant
 from django.utils import timezone
+from django.db import connection
 
 def run():
-    restaurant = Restaurant()
-    restaurant.name = 'My Italian Restaurant'
-    restaurant.date_opened = timezone.now()
-    restaurant.latitude = 51.2
-    restaurant.longitude = 34.2
-    restaurant.restaurant_type = Restaurant.RestaurantTypes.ITALIAN
+    restaurants = Restaurant.objects.all() # By default, it fetches total 21 records from the DB.
+    
+    print(restaurants)
 
-    restaurant.save()
+    print(connection.queries) # print out all the SQL queries
