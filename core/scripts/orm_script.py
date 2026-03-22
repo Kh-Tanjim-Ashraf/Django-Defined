@@ -6,23 +6,9 @@ from pprint import pprint
 
 
 def run():
-    # Create 3 sales record of the first restaurant
-    Sale.objects.create(
-        restaurant = Restaurant.objects.first(),
-        income = 5.41,
-        datetime = timezone.now()
-    )
-
-    Sale.objects.create(
-        restaurant = Restaurant.objects.first(),
-        income = 3.12,
-        datetime = timezone.now()
-    )
-
-    Sale.objects.create(
-        restaurant = Restaurant.objects.first(),
-        income = 6.43,
-        datetime = timezone.now()
-    )
+    # Fetch all the sale-records of a specific restaurant using that specific restaurant instance.
+    restaurant = Restaurant.objects.first()
+    sales = restaurant.sales.all()
+    print(sales)
 
     pprint(connection.queries) # print out all the SQL queries
