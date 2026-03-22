@@ -12,7 +12,19 @@
 5. Use the following command to execute the python script.
 > python manage.py runscript <script_file_name>
 
-<small>RunScript | [Docs Link]('https://www.django-extensions.readthedocs.io/en/latest/runscript.html')</small>
+<small>*Required python-django package: <b>django-extension</b></small>
+
+<small>RunScript | [Docs Link](https://www.django-extensions.readthedocs.io/en/latest/runscript.html)</small>
+
+
+### Usage of 'shell_plus' Command
+`django shell_plus` is an enhanced version of the default Django shell provided by the Django Extensions package. Its primary benefit is that it automatically imports all of the models of a project and several commonly used Django utilities, saving time and effort during development and debugging.
+
+<small>*Required python-django package: <b>django-extension</b></small>
+
+> Command: python manage.py shell_plus --print-sql
+
+<small>NB: Used the '<i>--print-sql</i>' flag in order to view the raw sql of every ORM query.</small>
 
 
 <small><b>NB:</b> View the git commits to view all the different types of runscript functions implemented in the same <b>orm_scripts.py</b> file.</small>
