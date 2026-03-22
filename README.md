@@ -70,5 +70,12 @@ If a table contains any foreign relationship with another table, and we want to 
 
 
 ## The '.filter()' method
-The '<b>.filter()</b>' method returns a queryset (list) of records which meet the condition that is passed as kwarg-value inside the method.
+The '<b>.filter()</b>' method returns a queryset (_list_) of records which meet the condition that is passed as kwarg-value inside the method. 
+<small>[Commit Link]()</small>
+
+
+## The '.get()' method
+The '<b>.get()</b>' method returns a class instance of a record which meet the condition that is passed as kwarg-value inside the method. 
+<br/>
+<small><b>Note:</b> If a record contains any foreign key data, then that can be called without executing another ORM query, since they (_foreign keys_) are being fetched at the first ORM query execution.</small>
 <small>[Commit Link]()</small>
