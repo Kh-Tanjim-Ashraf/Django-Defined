@@ -38,5 +38,10 @@ To query & fetch <u>the first five records</u> from the database using the index
 
 
 ## The '{model}.objects.create()' method
-Create <u>a new record</u> using the '<b>.create()</b>' method.
+Create <u>a new record</u> using the '<b>.create()</b>' method. The model fields will be passed as kwargs inside this method.
+<small>[Commit Link]()</small>
+
+
+## The '{model}.objects.count()' method
+Count <u>the total number of record(s)</u> using the '<b>.count()</b>' method.
 <small>[Commit Link]()</small>
