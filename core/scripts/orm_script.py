@@ -6,14 +6,8 @@ from pprint import pprint
 
 
 def run():
-    # Insert record into a table where foreign keys exists, for that, import the model instances first.
-    user = User.objects.first() # Fetch the first user instance
-    restaurant = Restaurant.objects.first() # Fetch the first user instance
-    Rating.objects.create(
-        user = user,
-        restaurant = restaurant,
-        rating = 3
-    )
-    pprint(Rating.objects.all())
+    # Fetch & return a queryset (list), based on passing the value(s) in model-field(s)
+    rating = Rating.objects.filter(rating=3)
+    pprint(rating)
 
     pprint(connection.queries) # print out all the SQL queries

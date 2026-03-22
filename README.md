@@ -67,3 +67,8 @@ Count <u>the total number of record(s)</u> using the '<b>.count()</b>' method.
 ## Working With The Foreign Keys
 If a table contains any foreign relationship with another table, and we want to insert a new record using the Django ORM, then we are required to first fetch the instance of the record from that foreign table, after that, we can insert <u>the instance itself as foreign field value</u> into the main table.
 <small>[Commit Link]()</small>
+
+
+## The '.filter()' method
+The '<b>.filter()</b>' method returns a queryset (list) of records which meet the condition that is passed as kwarg-value inside the method.
+<small>[Commit Link]()</small>
