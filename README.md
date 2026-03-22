@@ -14,7 +14,7 @@
 
 <small>*Required python-django package: <b>django-extension</b></small>
 
-<small>RunScript | [Docs Link](https://www.django-extensions.readthedocs.io/en/latest/runscript.html)</small>
+<small>RunScript | [Docs Link](https://django-extensions.readthedocs.io/en/latest/runscript.html)</small>
 
 
 ### Usage of 'shell_plus' Command
@@ -61,4 +61,9 @@ Create <u>a new record</u> using the '<b>.create()</b>' method. The model fields
 
 ## The '{model}.objects.count()' method
 Count <u>the total number of record(s)</u> using the '<b>.count()</b>' method.
+<small>[Commit Link]()</small>
+
+
+## Working With The Foreign Keys
+If a table contains any foreign relationship with another table, and we want to insert a new record using the Django ORM, then we are required to first fetch the instance of the record from that foreign table, after that, we can insert <u>the instance itself as foreign field value</u> into the main table.
 <small>[Commit Link]()</small>
