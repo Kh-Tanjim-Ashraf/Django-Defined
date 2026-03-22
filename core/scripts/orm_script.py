@@ -6,9 +6,18 @@ from pprint import pprint
 
 
 def run():
-    # Fetch all the sale-records of a specific restaurant using that specific restaurant instance.
+    # Fetch a record & if not found, then create the record
     restaurant = Restaurant.objects.first()
-    sales = restaurant.sales.all()
-    print(sales)
+    user = User.objects.first()
+    rating, created = Rating.objects.get_or_create(
+        user = user,
+        restaurant = restaurant,
+        rating = 4
+    )
+    print(rating)
+
+    if created:
+        # Send email, or execute other logic
+        pass
 
     pprint(connection.queries) # print out all the SQL queries

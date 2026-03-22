@@ -59,6 +59,11 @@ Create <u>a new record</u> using the '<b>.create()</b>' method. The model fields
 <small>[Commit Link]()</small>
 
 
+## The '{model}.objects.get_or_create()' method
+First perform a lookup into the DB, if a record is not found, then only create <u>a new record</u> using the '<b>.get_or_create()</b>' method. The model fields will be passed as kwargs inside this method.
+<small>[Commit Link]()</small>
+
+
 ## The '{model}.objects.count()' method
 Count <u>the total number of record(s)</u> using the '<b>.count()</b>' method.
 <small>[Commit Link]()</small>
