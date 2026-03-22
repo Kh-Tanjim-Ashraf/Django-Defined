@@ -3,8 +3,13 @@ from django.utils import timezone
 from django.db import connection
 
 def run():
-    restaurants = Restaurant.objects.all()[0:5] # Fetch the first 5 record from the DB.
-
-    print(restaurants)
+    # Create a new record using the '.create()' method
+    Restaurant.objects.create(
+        name = "Pizza Shop",
+        date_opened = timezone.now(),
+        latitude = 51.3,
+        longitude = 37.4,
+        restaurant_type = Restaurant.RestaurantTypes.GREEK
+    )
 
     print(connection.queries) # print out all the SQL queries
