@@ -1,4 +1,4 @@
-from core.models import Restaurant, Rating
+from core.models import Restaurant, Rating, Sale
 from django.utils import timezone
 from django.db import connection
 from django.contrib.auth.models import User
@@ -6,9 +6,23 @@ from pprint import pprint
 
 
 def run():
-    # Fetch all the ratings of a specific restaurant; using the '{main_model}.{model}_set.all()' manager
-    restaurant = Restaurant.objects.first()
-    ratings = restaurant.ratings.all()
-    pprint(ratings)
+    # Create 3 sales record of the first restaurant
+    Sale.objects.create(
+        restaurant = Restaurant.objects.first(),
+        income = 5.41,
+        datetime = timezone.now()
+    )
+
+    Sale.objects.create(
+        restaurant = Restaurant.objects.first(),
+        income = 3.12,
+        datetime = timezone.now()
+    )
+
+    Sale.objects.create(
+        restaurant = Restaurant.objects.first(),
+        income = 6.43,
+        datetime = timezone.now()
+    )
 
     pprint(connection.queries) # print out all the SQL queries
