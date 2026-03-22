@@ -3,7 +3,8 @@ from django.utils import timezone
 from django.db import connection
 
 def run():
-    # Count the total number of records using the '.count()' method
-    print(Restaurant.objects.count())
+    # Query & fetch the last record using the '.last()' method
+    restaurant = Restaurant.objects.last()
+    print(restaurant)
 
     print(connection.queries) # print out all the SQL queries

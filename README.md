@@ -32,6 +32,11 @@ To query & fetch <u>the first record</u> from the database using the 'objects' m
 <small>[Commit Link]()</small>
 
 
+## The '{model}.objects.all().last()' method
+To query & fetch <u>the last record</u> from the database using the 'objects' manager.
+<small>[Commit Link]()</small>
+
+
 ## The '{model}.objects.all().[0:4]' method
 To query & fetch <u>the first five records</u> from the database using the indexing into django queryset.
 <small>[Commit Link]()</small>
