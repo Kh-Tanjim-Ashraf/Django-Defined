@@ -12,14 +12,26 @@
 5. Use the following command to execute the python script.
 > python manage.py runscript <script_file_name>
 
-<small>[Docs Link]('https://www.django-extensions.readthedocs.io/en/latest/runscript.html')</small>
+<small>RunScript | [Docs Link]('https://www.django-extensions.readthedocs.io/en/latest/runscript.html')</small>
 
+
+<small><b>NB:</b> View the git commits to view all the different types of runscript functions implemented in the same <b>orm_scripts.py</b> file.</small>
 
 ## The '{model}.save()' Method
 The __{model}.save()__ method is used for both creating and updating record for database.
+<small>[Commit Link]()</small>
 
 
 ## The '{model}.objects.all()' method
-To query & fetch <u>all the records</u> from the database using this 'objects' manager.
+To query & fetch <u>all the records</u> from the database using the 'objects' manager.
+<small>[Commit Link]()</small>
 
 
+## The '{model}.objects.all().first()' method
+To query & fetch <u>the first record</u> from the database using the 'objects' manager.
+<small>[Commit Link]()</small>
+
+
+## The '{model}.objects.all().[0:5]' method
+To query & fetch <u>the first first records</u> from the database using the indexing into django queryset.
+<small>[Commit Link]()</small>

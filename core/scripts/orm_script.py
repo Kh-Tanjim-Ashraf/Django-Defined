@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.db import connection
 
 def run():
-    restaurants = Restaurant.objects.all().first() # Fetch the record from the DB.
+    restaurants = Restaurant.objects.all()[0:5] # Fetch the first 5 record from the DB.
 
     print(restaurants)
 
