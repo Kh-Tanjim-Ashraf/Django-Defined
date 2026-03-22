@@ -91,3 +91,22 @@ If a model has a <b>ForeignKey</b>, and we want to access the instances of that 
 ratings = restaurant.rating_set.all() <br/>
 print(ratings)
 </small>
+
+<small>[Commit Link]()</small>
+
+### Method-2: Using Custom Name for Reverse Manager
+Instead of using the default `{model}_set` manager, for executing reverse query, we can use a custom reverse manager name by defining an extra kwarg in the model-field param.
+<br/>
+<small>
+<b>ie.</b> In the 'Rating' table, where the restaurant-field is defined, add another extra kwargs like the following:
+<br/>
+> restaurant = models.ForeignKey(Restaurant, on_delete=CASCADE, related_name='ratings') <br/><br/>
+Execute the commands: <br/>
+python manage.py makegrations <br/>
+python manage.py migrate <br/><br/>
+restaurant = Restaurant.objects.first() <br/>
+ratings = restaurant.ratings.all() <br/>
+print(ratings)
+</small>
+
+<small>[Commit Link]()</small>
