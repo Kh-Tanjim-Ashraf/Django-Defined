@@ -81,3 +81,37 @@ I am building this polling app according to the instructions provided in the <a 
    > > ]
 
    NB: When Django encounters **include()** function, it chops off whatever string is matched from the url-string of request, then sends the remaining string to the included URLconf (in this case, the URLconf of **Polls** app) for further processing.
+
+7. Create Django's default database tables using the following command:
+
+   > python manage.py migrate
+
+8. Create two django-models named "**Question**" & "**Choice**" inside the **models.py** file in order to create database tables based on those models. <br/>
+   <small>_NB: Each question might contain multiple choices, but a choice can only belong to a specific question. Thus this will be a One-To-Many relationship._</small>
+
+   > from django.db import models <br/>
+
+   > class Question (models.Model): <br/>
+   > &emsp;question = models.CharField(max_length=200) <br/>
+   > &emsp;pub_date = models.DateTimeField(verbose_name="Date Published")
+
+   > class Choice(models.Model): <br/>
+   > &emsp;question = models.ForeignKey(Question, on_delete=models.CASCADE) <br/>
+   > &emsp;choice_text = models.CharField(max_length=200) <br/>
+   > &emsp;votes = models.IntegerField(default=0)
+
+   The class-attributes the **Question** & **Choice** model contain represents fields in database tables. In order to apply changes into the database, we are required to take the following steps: <br/>
+   1. Define the **Polls** app inside the project's **settings.py** file.
+
+      > INSTALLED_APPS [ <br/>
+      > > &emsp;'....', <br/>
+      > > &emsp;'polls.apps.PollsConfig', <br/>
+      > > ]
+
+   2. Execute the **migrations** command to store the changes/creation of models to the local disk as **polls/migrations/0001_initial.py** file. This is a human-editable file, in case sometime we need to make some manual tweak before applying the changes into the database.
+
+      > python manage.py makemigrations
+
+   3. For applying those changes from the migrations files to the connected database, we need to execute the **migrate** command.
+
+      > python manage.py migrate
