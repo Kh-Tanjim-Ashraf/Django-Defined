@@ -1,4 +1,4 @@
-# Djanog Polling App
+# Django Polling App
 
 I am building this polling app according to the instructions provided in the <a href="https://docs.djangoproject.com/en/6.0/intro/">official Django documentation</a>. The purpose of building this app is to get a better knowledge of Django from it's official site instead of other sources in the internet. I will try to include additional information where I find it difficult to understand any topic.
 
@@ -139,21 +139,32 @@ I am building this polling app according to the instructions provided in the <a 
 
     Thus for getting better representation of instance objects, we'll define the **\_\_str\_\_()** method inside the model classes. So the models will have the following definitions:
 
-      > from django.db import models <br/>
+    > from django.db import models <br/>
 
-      > class Question(models.Model): <br/>
-      > &emsp;*** <br>
-      > &emsp;def \_\_str\_\_(self): <br/>
-      > &emsp;&emsp;return self.question
+    > class Question(models.Model): <br/>
+    > &emsp;\*\*\* <br>
+    > &emsp;def \_\_str\_\_(self): <br/>
+    > &emsp;&emsp;return self.question
 
-      > class Choice(models.Model): <br/>
-      > &emsp;*** <br>
-      > &emsp;def \_\_str\_\_(self): <br/>
-      > &emsp;&emsp;return self.choice_text
+    > class Choice(models.Model): <br/>
+    > &emsp;\*\*\* <br>
+    > &emsp;def \_\_str\_\_(self): <br/>
+    > &emsp;&emsp;return self.choice_text
 
 12. In order to, check if a question was published a day ago (considering recent) as a boolean format result. Thus for this, I used the **timezone** module to find out the difference of time & compare it with each question-instance's pub_date.
 
-      > from django.utils import timezone <br/>
-      > def was_currently_published(self): <br/>
-      > &emsp;self.pub_date >= timezone.now() - timezone.timedelta(days=1)
-   
+    > from django.utils import timezone <br/>
+    > def was_currently_published(self): <br/>
+    > &emsp;self.pub_date >= timezone.now() - timezone.timedelta(days=1)
+
+13. Each question have multiple choices, but each choice belongs to a specific question. Thus the question-choice has a **Many-To-One** relationship.
+
+      In some scenarios, we need to get all the choices of a question. For such reverse query, we can use the **model_set** as "reverse relationship accesssor". For using this accessor, retrieve a question-instance first, then, use the **choice_set** attribute, then use the [<u>django-orm specific methods</u>](https://docs.djangoproject.com/en/6.0/ref/models/querysets/) (*.all(), .filter(), .exclude() etc.*) to make general db-operations on the **Choice** model. The following example will provide more clarity:
+
+      > from .models import Question <br/>
+      > q = Question.objects.get(id=1) <br/>
+      > q.choice_set.all()
+      
+      <small>NB: It's related to the **related_name** attribute of class variables of a django model.</small>
+
+      Otherwise, if we follow a brute force approach for retrieving all the choices of a specific question, then we need to retrieve the question instance first, then execute a *filter()* django-specific operation on the **Choice** model using the question instance to extract the choices connected with the specific question.
