@@ -104,6 +104,7 @@ I am building this polling app according to the instructions provided in the <a 
    1. Define the **Polls** app inside the project's **settings.py** file.
 
       > INSTALLED_APPS [ <br/>
+      >
       > > &emsp;'....', <br/>
       > > &emsp;'polls.apps.PollsConfig', <br/>
       > > ]
@@ -115,3 +116,40 @@ I am building this polling app according to the instructions provided in the <a 
    3. For applying those changes from the migrations files to the connected database, we need to execute the **migrate** command.
 
       > python manage.py migrate
+
+9. Create the project's super user in order to use the **default admin panel** that is provided by Django out of the box. For that, use the following command:
+
+   > python manage.py createsuperuser
+
+   <small>NB: It'll prompt for the username, email & password for the super user (admin). Upon the successful creation of admin user & make the server up & running, we can access the admin panel by navigating to the url **127.0.0.1:8080**.</small>
+
+   > python manage.py runserver 8080
+
+10. We need to register the two models into the **admin.py** file, in order to view them inside the Django's default admin.
+
+    > from django.contrib import admin <br/>
+    > from .models import Question, Choice
+
+    > admin.site.register(Question) <br/>
+    > admin.site.register(Question)
+
+    NB: Populate some data in those models, thus we can make some db operations using django-orm through the django's shell command.
+
+11. While adding choices for the respective question from the admin panel, the select-from-dropbox was showing the question objects in a non-useful way. The question instances are showing as **Question Object (1)**, **Question Object (2)**.
+
+    Thus for getting better representation of instance objects, we'll define the **\_\_str\_\_()** method inside the model classes. So the models will have the following definitions:
+
+      > from django.db import models <br/>
+
+      > class Question(models.Model): <br/>
+      > &emsp;*** <br>
+      > &emsp;def \_\_str\_\_(self): <br/>
+      > &emsp;&emsp;return self.question
+
+      > class Choice(models.Model): <br/>
+      > &emsp;*** <br>
+      > &emsp;def \_\_str\_\_(self): <br/>
+      > &emsp;&emsp;return self.choice_text
+
+
+
