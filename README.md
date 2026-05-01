@@ -151,5 +151,9 @@ I am building this polling app according to the instructions provided in the <a 
       > &emsp;def \_\_str\_\_(self): <br/>
       > &emsp;&emsp;return self.choice_text
 
+12. In order to, check if a question was published a day ago (considering recent) as a boolean format result. Thus for this, I used the **timezone** module to find out the difference of time & compare it with each question-instance's pub_date.
 
-
+      > from django.utils import timezone <br/>
+      > def was_currently_published(self): <br/>
+      > &emsp;self.pub_date >= timezone.now() - timezone.timedelta(days=1)
+   
