@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product
+from product.models import Product
 
 
 def productIndex(request):
