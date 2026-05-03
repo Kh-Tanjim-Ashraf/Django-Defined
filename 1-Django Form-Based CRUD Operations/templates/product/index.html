@@ -15,9 +15,11 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Product ID</th>
           <th>Name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Update/Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -25,9 +27,13 @@
         {% for product in products %}
         <tr>
           <td>{{ forloop.counter }}</td>
+          <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
+          <td>
+            <a href="{% url 'product-detail' product.id %}">Edit</a> | Delete
+          </td>
         </tr>
         {% endfor %}
       </tbody>
