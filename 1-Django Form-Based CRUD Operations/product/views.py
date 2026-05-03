@@ -64,3 +64,16 @@ def detailProduct(request, pk):
         template_name='product/detail-product.html',
         context=context
     )
+
+def deleteProduct(request, pk):
+    product=Product.objects.get(id=pk)
+    if request.method == "POST":
+        product.delete()
+        return redirect('product-list')
+        
+    context={'product':product}
+    return render(
+        request=request,
+        template_name='product/delete-product.html',
+        context=context
+    )

@@ -26,3 +26,7 @@ An example is given below:
 
    The product information passed inside the **product-form.html** page can be retrieved using the "**prod**" key & store them inside the "_value_" attr of input fields.
 6. Make modification in product detail, then send a post request to the backend function, it receives the data & update the product instance accordingly that it retrieved earlier (_for sending the info the the detail-page for populating input field_). Finally, redirect the user to the product list page.
+
+
+<!-- Concept Of Workflow -->
+NB: Before making any functionality which requires a separate HTML page, I started with a minimal HTML page, then I create the view function to just return the newly created page. Lastly I plug the URL path to that view function in order to access the page from browser. Then I start building the logic & the HTML page simultaneously.
