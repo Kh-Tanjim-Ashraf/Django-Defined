@@ -30,7 +30,7 @@ def createProduct(request):
             price=prodPrice
         )
 
-        return redirect('create-new-product')
+        return redirect('product-list')
 
     return render(
         request=request,
