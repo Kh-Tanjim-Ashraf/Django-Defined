@@ -3,7 +3,8 @@ from .models import Product
 
 
 def productIndex(request):
-    context = {}
+    products = Product.objects.all()
+    context = {'products': products}
     return render(
         request=request,
         template_name='product/index.html',

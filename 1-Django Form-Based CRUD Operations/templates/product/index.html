@@ -10,5 +10,27 @@
     <p>
       <a href="{% url 'create-new-product' %}">Create a new product</a>
     </p>
+    <!-- Product Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over the products -->
+        {% for product in products %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </body>
 </html>
