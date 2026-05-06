@@ -30,7 +30,7 @@ def createProduct(request):
             price=prodPrice
         )
 
-        return redirect('product-list')
+        return redirect('product-list-html-form')
 
     return render(
         request=request,
@@ -56,7 +56,7 @@ def detailProduct(request, pk):
         product.save()
 
         # Redirect to the "Product-List" page
-        return redirect('product-list')
+        return redirect('product-list-html-form')
         
     context={'product':product}
     return render(
@@ -69,7 +69,7 @@ def deleteProduct(request, pk):
     product=Product.objects.get(id=pk)
     if request.method == "POST":
         product.delete()
-        return redirect('product-list')
+        return redirect('product-list-html-form')
         
     context={'product':product}
     return render(

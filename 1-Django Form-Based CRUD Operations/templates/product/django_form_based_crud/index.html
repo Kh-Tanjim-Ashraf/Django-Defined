@@ -6,7 +6,38 @@
     <title>Products</title>
   </head>
   <body>
-    <h1>This is the Product List</h1>
-    
+    <h1>Product List | Home</h1>
+    <p>
+      <a href="{% url 'create-new-product-dj-form' %}">Create a new product</a>
+    </p>
+    <!-- Product Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Update/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over the products -->
+        {% for product in products %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <a href="">Edit</a> |
+            <a href="">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </body>
 </html>

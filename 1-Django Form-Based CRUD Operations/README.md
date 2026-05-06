@@ -35,7 +35,8 @@
 
 I wanted to demonstrate the CRUD operations based upon both the function & class-based views along with the HTML-form, Django-model form & Django-generic form. Thus I created a "**views**" folder inside the "product" app. <br/>
 I moved the previous views file & renamed it as "**func_based_views_html_forms.py**". <br/>
-The _imports_ inside the views & urls files have changed accordingly.
+The _imports_ inside the views & urls files have changed accordingly. <br/>
+I separated the HTML-form & Django-form based templates into two separate folders named "**html_based_crud**" & "**django_form_based_crud**".
 
 ## ✨Concept Of Workflow
 
