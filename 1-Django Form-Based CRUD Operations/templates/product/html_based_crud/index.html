@@ -6,9 +6,9 @@
     <title>Products</title>
   </head>
   <body>
-    <h1>This is the Product List</h1>
+    <h1>Product List | Home</h1>
     <p>
-      <a href="{% url 'create-new-product' %}">Create a new product</a>
+      <a href="{% url 'create-new-product-html-form' %}">Create a new product</a>
     </p>
     <!-- Product Table -->
     <table>
@@ -32,8 +32,8 @@
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <a href="{% url 'product-detail' product.id %}">Edit</a> |
-            <a href="{% url 'product-delete' product.id %}">Delete</a>
+            <a href="{% url 'product-detail-html-form' product.id %}">Edit</a> |
+            <a href="{% url 'product-delete-html-form' product.id %}">Delete</a>
           </td>
         </tr>
         {% endfor %}

@@ -7,7 +7,7 @@ def productIndex(request):
     context = {'products': products}
     return render(
         request=request,
-        template_name='product/index.html',
+        template_name='product/html_based_crud/index.html',
         context=context
     )
 
@@ -34,7 +34,7 @@ def createProduct(request):
 
     return render(
         request=request,
-        template_name='product/create-product.html'
+        template_name='product/html_based_crud/create-product.html'
     )
 
 
@@ -61,7 +61,7 @@ def detailProduct(request, pk):
     context={'product':product}
     return render(
         request=request,
-        template_name='product/detail-product.html',
+        template_name='product/html_based_crud/detail-product.html',
         context=context
     )
 
@@ -74,6 +74,6 @@ def deleteProduct(request, pk):
     context={'product':product}
     return render(
         request=request,
-        template_name='product/delete-product.html',
+        template_name='product/html_based_crud/delete-product.html',
         context=context
     )
