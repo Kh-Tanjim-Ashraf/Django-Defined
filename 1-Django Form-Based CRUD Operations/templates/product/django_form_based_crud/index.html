@@ -32,7 +32,7 @@
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <a href="">Edit</a> |
+            <a href="{% url 'update-product-dj-form' product.id %}">Edit</a> |
             <a href="">Delete</a>
           </td>
         </tr>

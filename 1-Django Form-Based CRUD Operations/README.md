@@ -3,7 +3,7 @@
 ### 🎯Objectives
 
 1. ✅ Create basic HTML forms for CRUD operations.
-2. Create Model-Forms in Django for the same operations.
+2. ✅ Create Model-Forms in Django for the same operations.
 3. Create Django Generic Forms for the same operations. <br/>
    <small>NB: Use separate URL-blocks while demonstrating CRUD operations in different types forms.</small>
 
@@ -34,9 +34,24 @@
 ### 🛠️File Structure Refactorization
 
 I wanted to demonstrate the CRUD operations based upon both the function & class-based views along with the HTML-form, Django-model form & Django-generic form. Thus I created a "**views**" folder inside the "product" app. <br/>
-I moved the previous views file & renamed it as "**func_based_views_html_forms.py**". <br/>
+I moved the previous views file & renamed it as "**func_based_views_html_forms.py**". Also created another view file named "**func_based_views_model_forms.py**" to separate the CRUD operations on Django-model-based forms.<br/>
 The _imports_ inside the views & urls files have changed accordingly. <br/>
 I separated the HTML-form & Django-form based templates into two separate folders named "**html_based_crud**" & "**django_form_based_crud**".
+I segregated the urls accordingly for the html-form-based & Django-form-based CRUD operations.
+
+<hr/>
+
+### 📌Objective-2
+
+1. I created a form-class file named "**model_forms.py**" for model-form (_ProductForm_). It's a simple model based form, where I included all the fields of "**Product**" model using the `__all__` string attr.
+2. Inside the model-form-based view ("**func_based_views_model_forms.py**"), I created the product-list page again, because I didn't want to make confusion between the named-URLs of two different form-based approaches.
+3. [**Create Record**] For the create operation, initially, instantiate the model-form (_ProductForm_), thus an empty form appears whenever a user makes a `Get` request.
+4. After getting the `Post` request, I passed the request-data straight inside the model-form (_ProductForm_) as data, check if the data is valid using the `is_valid()` function. If no error occured, save teh data-form to create the record inside the DB. Finally redirect the user to the product-list page.
+5. [**Update Record**] Initially, get the product-record by it's id, then instantiate the model-form (_ProductForm_) with the product data by passing them through `instance` param of that form. So that, any user makes the `Get` request will get a page loaded with the form & data.
+6. Make antoher if-condition block to handle the `Post` request. There, I passed the request-data into the model-form (_ProductForm_) in order to execute the form validation using the `is_valid()` function.
+7. If no error occured, I passed the request-data again along with product-instance record into the model-form (_ProductForm_) object. Finally execute the `.save()` function to commit the change into the DB.
+
+<hr/>
 
 ## ✨Concept Of Workflow
 
