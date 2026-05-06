@@ -4,15 +4,18 @@ from product.models import Product
 
 # Product List
 def productIndex(request):
+
     products=Product.objects.all()
+    
     context={'products':products}
+    
     return render(
         request=request,
         template_name='product/django_form_based_crud/index.html',
         context=context
     )
 
-[]
+
 # Product Create
 def productCreate(request):
     # Post Request
@@ -34,7 +37,7 @@ def productCreate(request):
     )
 
 
-# Product Update
+# Product Update+Detail
 def productUpdate(request, pk):
     product=get_object_or_404(Product, pk=pk)
     
@@ -57,5 +60,24 @@ def productUpdate(request, pk):
     return render(
         request=request,
         template_name='product/django_form_based_crud/update-product.html',
+        context=context
+    )
+
+
+# Product Delete
+def productDelete(request, pk):
+    product=get_object_or_404(Product, pk=pk) # Require to pass the product-id through defining the "pk" keyword, otherwise it raises exception
+    
+    # Post Request
+    if request.method == "POST":
+        product.delete()
+        return redirect('product-list-dj-form')
+
+    # Get Request
+    context={'product':product}
+
+    return render(
+        request=request,
+        template_name='product/django_form_based_crud/delete-product.html',
         context=context
     )
