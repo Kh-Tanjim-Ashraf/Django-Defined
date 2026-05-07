@@ -54,6 +54,21 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
 
 <hr/>
 
+### 🛠️File Structure Refactorization
+
+1. Created a separate view named "**func_based_views_dj_generic_forms.py**" for defining function-based-views integrated with Django generic forms.
+2. Created a different template sub folder named "**django_generic_form_based_crud**" for the HTML files.
+3. Separated the urls of Django generic forms inside the same "**urls.py**" file.
+
+<hr/>
+
+### 📌Objective-3
+1. Like the previous processes, we are required to have an index file ("**index.html**") which shows the product records as list. <br/>
+The file path is: _product/django_generic_form_based_crud/index.html_
+2. I created a form inside the "**generic_forms.py**" file, where I created a Django form class (**ProductFormGen**). In this form class, I inherited the _forms.Form_ module by defining the import as `from django import forms`. <br/>
+This provides me a simple form provided by Django, but no model attached to it. Thus I need to manually define each field which I want to show in the frontend form. 
+
+
 ## ✨Concept Of Workflow
 
 NB: Before making any functionality which requires a separate HTML page, I start with a minimal HTML page, then I create the view function to just return the newly created page. Lastly I plug the URL path to that view function in order to access the page from browser. Then I start building the logic & the HTML page simultaneously.
