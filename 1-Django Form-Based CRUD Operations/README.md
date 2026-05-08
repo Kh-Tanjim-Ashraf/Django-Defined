@@ -63,11 +63,12 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
 <hr/>
 
 ### 📌Objective-3
-1. Like the previous processes, we are required to have an index file ("**index.html**") which shows the product records as list. <br/>
-The file path is: _product/django_generic_form_based_crud/index.html_
-2. I created a form inside the "**generic_forms.py**" file, where I created a Django form class (**ProductFormGen**). In this form class, I inherited the _forms.Form_ module by defining the import as `from django import forms`. <br/>
-This provides me a simple form provided by Django, but no model attached to it. Thus I need to manually define each field which I want to show in the frontend form. 
 
+1. Like the previous processes, we are required to have an index file ("**index.html**") which shows the product records as list. <br/>
+   The file path is: _product/django_generic_form_based_crud/index.html_
+2. I created a form inside the "**generic_forms.py**" file, where I created a Django form class (_ProductFormGen_). In this form class, I inherited the _forms.Form_ module by defining the import as `from django import forms`. <br/>
+   This provides me a standard Django form, with no model attached to it. Thus I need to manually define each field which I want to show in the frontend form.
+3. [**Create Record**] I created a basic view to propagate the standard Django form (_ProductFormGen_) earlier I created inside the "**generic_forms.py**" file. The view function is currently build to handle the get request only, since I will test & implement different levels of validation inside the form along with it's fields.
 
 ## ✨Concept Of Workflow
 
