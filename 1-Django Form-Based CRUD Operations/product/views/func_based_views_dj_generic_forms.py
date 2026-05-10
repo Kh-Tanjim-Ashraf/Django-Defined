@@ -42,10 +42,17 @@ def productCreate(request):
 
 
 def productUpdate(request, pk):
+    product = Product.objects.get(id=pk)
     if request.method == "POST":
         pass
     else:
-        form = ProductFormGen()
+        # Map the model fields' values to a dictionary for the form
+        initial_data = {
+            'name': product.name,
+            'quantity': product.quantity,
+            'price': product.price
+        }
+        form = ProductFormGen(initial=initial_data) # Instead of 'instance' param for the model-form, for Django standard form, 'initial' param is used to populate the product-record.
     context = {'form': form}
     return render(
         request=request,

@@ -80,7 +80,10 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
    - [**Field-level constraints - clean_\<fieldname\>**]: For implementing more complex validation logic in individual field, we can define a method containing "_clean\_\<fieldname\>(self)_" inside the Django form class. We implement such validations in both the "_quantity_" & "_price_" fields. But it's required to **<u>return the data</u>** from these clean methods.
    - [**Form-level constraints - clean() method**]: If we want to build validation logic where two or more form fields need to be compared, then we define the "_clean(self)_" method. This cross validation is performed on the entire form. It's also required to **<u>return the data</u>** from the method.
 5. [**Update Record**] Initially defined the function "**productUpdate()**" to handle the **GET** request, where an empty unbound Django form is initialized & passed to the Django's **Template Engine** to render in the template. <br/>
-A user will submit a form for updation operation, thus the **GET** & **POST** requests are conditionally separated based on _request.method_.
+   [_Conditional Separation_] A user will submit a form for updation operation, thus the **GET** & **POST** requests are conditionally separated based on _request.method_. <br/>
+   [_'initial' param_] Unlike the Django model form, record-object is passed through the '_instance_' param to display the record in the template. But for the standard forms of Django we are required to use the '_initial_' param.
+   - For this, we need to create a dictionary ensuring the keys are equivalent to the form fields to map the record objects correctly.
+   - Then pass the mapped dictionary to the '_initial_' param of the form.
 
 ## ✨Concept Of Workflow
 
