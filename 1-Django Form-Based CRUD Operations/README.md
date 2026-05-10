@@ -69,6 +69,12 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
 2. I created a form inside the "**generic_forms.py**" file, where I created a Django form class (_ProductFormGen_). In this form class, I inherited the _forms.Form_ module by defining the import as `from django import forms`. <br/>
    This provides me a standard Django form, with no model attached to it. Thus I need to manually define each field which I want to show in the frontend form.
 3. [**Create Record**] I created a basic view to propagate the standard Django form (_ProductFormGen_) earlier I created inside the "**generic_forms.py**" file. The view function is currently build to handle the get request only, since I will test & implement different levels of validation inside the form along with it's fields.
+   - After implementing different form validations & testing, I defined the product create functionality into the "**productCreate()**" function. <br/>
+     Since, this form is not associated with any Django model, we are required to extract each fields user-input through invoking the form's **cleaned_data** dictionary which is containing all the data as key-value pairs. <br/>
+     Finally, I passed thse values as params of the "**create()**" method of the "**Product**" class.
+
+     > Product.objects.create(name=\<value\>, quantity=\<value\>, price=\<value\>)
+
 4. [**Form Validations**] Inside the "**ProductFormGen()**" class, I have created 3 types of form validations:
    - [**Field-level constraints - Validators**]: By using the "_validators_" param on single form fields, we can perform simple validation checks. For this, I've used "_MinValueValidator()_" in the "_quantity_" & "_price_" fields to prevent negative inputs.
    - [**Field-level constraints - clean_\<fieldname\>**]: For implementing more complex validation logic in individual field, we can define a method containing "_clean\_\<fieldname\>(self)_" inside the Django form class. We implement such validations in both the "_quantity_" & "_price_" fields. But it's required to **<u>return the data</u>** from these clean methods.

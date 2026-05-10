@@ -17,7 +17,18 @@ def productCreate(request):
     if request.method == 'POST':
         form = ProductFormGen(request.POST)
         if form.is_valid():
-            # Execute some logic
+            # Get the variables from the form-inputs
+            prodName = form.cleaned_data.get('name')
+            prodQuantity = form.cleaned_data.get('quantity')
+            prodPrice = form.cleaned_data.get('price')
+
+            # Save to DB
+            Product.objects.create(
+                name=prodName,
+                quantity=prodQuantity,
+                price=prodPrice
+            )
+
             return redirect('product-list-dj-gen-form')
     else:
         form=ProductFormGen()        
