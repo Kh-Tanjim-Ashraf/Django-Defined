@@ -50,7 +50,6 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
 5. [**Update Record**] Initially, get the product-record by it's id, then instantiate the model-form (_ProductForm_) with the product data by passing them through `instance` param of that form. So that, any user makes the `Get` request will get a page loaded with the form & data.
 6. Make antoher if-condition block to handle the `Post` request. There, I passed the request-data into the model-form (_ProductForm_) in order to execute the form validation using the `is_valid()` function.
 7. If no error occured, I passed the request-data again along with product-instance record into the model-form (_ProductForm_) object. Finally execute the `.save()` function to commit the change into the DB.
-8. [Delete Record] Initially I retrieved the product object using it's id, so that the user can get confirmed before deleteing the record. It's for the `Get` request. I added a form with **submit** button so that if the user confimed to delete the record then the backend can process the request based on `request.method == "POST"` method. Finally redirect the user to the product-list page.
 8. [**Delete Record**] Initially I retrieved the product object using it's id, so that the user can get confirmed before deleting the record. It's for the `Get` request. I added a form with **submit** button so that if the user confimed to delete the record then the backend can process the request based on `request.method == "POST"` method. Finally redirect the user to the product-list page.
 
 <hr/>
