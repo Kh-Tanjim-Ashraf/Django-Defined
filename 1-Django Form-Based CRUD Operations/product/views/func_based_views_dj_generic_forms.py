@@ -39,3 +39,16 @@ def productCreate(request):
         template_name='product/django_generic_form_based_crud/create-product.html',
         context=context
     )
+
+
+def productUpdate(request, pk):
+    if request.method == "POST":
+        pass
+    else:
+        form = ProductFormGen()
+    context = {'form': form}
+    return render(
+        request=request,
+        template_name='product/django_generic_form_based_crud/update-product.html',
+        context=context
+    )

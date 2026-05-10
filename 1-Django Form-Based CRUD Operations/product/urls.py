@@ -14,7 +14,8 @@ from product.views.func_based_views_model_forms import \
 # Django-generic-form related views
 from product.views.func_based_views_dj_generic_forms import \
     productIndex as prodIndx_dj_genf, \
-    productCreate as prodCreate_dj_genf
+    productCreate as prodCreate_dj_genf, \
+    productUpdate as prodUpdate_dj_genf
 
 urlpatterns = [
     # Function-based view with HTML form for CRUD operations
@@ -32,4 +33,5 @@ urlpatterns = [
     # Function-based view with Django generic form for CRUD operations
     path('django-generic-forms/', view=prodIndx_dj_genf, name='product-list-dj-gen-form'),
     path('django-generic-forms/create-new-product', view=prodCreate_dj_genf, name='create-new-product-dj-gen-form'),
+    path('django-generic-forms/update-product/<int:pk>/', view=prodUpdate_dj_genf, name='update-product-dj-gen-form'),
 ]

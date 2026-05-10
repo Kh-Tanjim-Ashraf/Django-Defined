@@ -79,6 +79,8 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
    - [**Field-level constraints - Validators**]: By using the "_validators_" param on single form fields, we can perform simple validation checks. For this, I've used "_MinValueValidator()_" in the "_quantity_" & "_price_" fields to prevent negative inputs.
    - [**Field-level constraints - clean_\<fieldname\>**]: For implementing more complex validation logic in individual field, we can define a method containing "_clean\_\<fieldname\>(self)_" inside the Django form class. We implement such validations in both the "_quantity_" & "_price_" fields. But it's required to **<u>return the data</u>** from these clean methods.
    - [**Form-level constraints - clean() method**]: If we want to build validation logic where two or more form fields need to be compared, then we define the "_clean(self)_" method. This cross validation is performed on the entire form. It's also required to **<u>return the data</u>** from the method.
+5. [**Update Record**] Initially defined the function "**productUpdate()**" to handle the **GET** request, where an empty unbound Django form is initialized & passed to the Django's **Template Engine** to render in the template. <br/>
+A user will submit a form for updation operation, thus the **GET** & **POST** requests are conditionally separated based on _request.method_.
 
 ## ✨Concept Of Workflow
 
