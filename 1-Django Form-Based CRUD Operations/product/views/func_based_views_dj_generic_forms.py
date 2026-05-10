@@ -43,8 +43,27 @@ def productCreate(request):
 
 def productUpdate(request, pk):
     product = Product.objects.get(id=pk)
+    
     if request.method == "POST":
-        pass
+        # Pass the product object as `data` of the form for further validations
+        form = ProductFormGen(data=request.POST)
+        if form.is_valid():
+            # Store the request data
+            prodName = form.cleaned_data.get('name')
+            prodQuantity = form.cleaned_data.get('quantity')
+            prodPrice = form.cleaned_data.get('price')
+            print(f"product name: {prodName}; quantity: {prodQuantity}; price: {prodPrice}")
+
+            # Update the value of previously retrieved product object
+            product.name = prodName
+            product.quantity = prodQuantity
+            product.price = prodPrice
+
+            # Save the product object to update the record into the DB
+            product.save()
+
+            # After saving the record to DB, redirect the user to the product-list page
+            return redirect('product-list-dj-gen-form')
     else:
         # Map the model fields' values to a dictionary for the form
         initial_data = {
@@ -53,7 +72,12 @@ def productUpdate(request, pk):
             'price': product.price
         }
         form = ProductFormGen(initial=initial_data) # Instead of 'instance' param for the model-form, for Django standard form, 'initial' param is used to populate the product-record.
-    context = {'form': form}
+
+    context = {
+        'form': form,
+        'product':product
+    }
+
     return render(
         request=request,
         template_name='product/django_generic_form_based_crud/update-product.html',
