@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from product.models import Product
 from product.forms.generic_forms import ProductFormGen
 
@@ -14,7 +14,14 @@ def productIndex(request):
 
 
 def productCreate(request):
-    form=ProductFormGen()
+    if request.method == 'POST':
+        form = ProductFormGen(request.POST)
+        if form.is_valid():
+            # Execute some logic
+            return redirect('product-list-dj-gen-form')
+    else:
+        form=ProductFormGen()        
+        
     context={'form':form}
     return render(
         request=request,
