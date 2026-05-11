@@ -83,3 +83,16 @@ def productUpdate(request, pk):
         template_name='product/django_generic_form_based_crud/update-product.html',
         context=context
     )
+
+
+def productDelete(request, pk):
+    product=Product.objects.get(id=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product-list-dj-gen-form')
+    context={'product':product}
+    return render(
+        request=request,
+        template_name='product/django_generic_form_based_crud/delete-product.html',
+        context=context
+    )

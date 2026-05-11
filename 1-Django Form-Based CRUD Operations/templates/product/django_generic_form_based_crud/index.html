@@ -33,7 +33,7 @@
           <td>{{ product.price }}</td>
           <td>
             <a href="{% url 'update-product-dj-gen-form' product.id %}">Edit</a> |
-            <a href="">Delete</a>
+            <a href="{% url 'delete-product-dj-gen-form' product.id %}">Delete</a>
           </td>
         </tr>
         {% endfor %}

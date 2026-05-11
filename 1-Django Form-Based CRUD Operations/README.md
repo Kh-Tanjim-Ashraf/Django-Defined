@@ -88,6 +88,8 @@ I segregated the urls accordingly for the html-form-based & Django-form-based CR
    [_POST request_]: Since we defined some manual validations, to execute those operations, we are required to pass the user-inputs as <u>**request.POST**</u> through the form (_ProductFormGen()_) class. After the form gets validated, store each user-inputs from the <u>**cleaned_data**</u> dictionary & replace the field value of the previously retrieved product object. <br/>
    Finally to reflect the updated value into the DB, we are required to execute the `.save()` method on the product-record obejct. After successfully saved the update into the DB, redurect the user using the `redirect(\<named_url_of_next_page\>)` method.
 
+6. [**Delete Record**] Created a function named "**productDelete()**" method to delete the specific product. Initially in this function, the product record is retrieved from the DB & displayed to the template, so that the user ensured about the product before deletion. This happens in the `GET` request of the function. In the `POST` request, the product record gets deleted & redirected the user to the product list page.
+
 ## ✨Concept Of Workflow
 
 NB: Before making any functionality which requires a separate HTML page, I start with a minimal HTML page, then I create the view function to just return the newly created page. Lastly I plug the URL path to that view function in order to access the page from browser. Then I start building the logic & the HTML page simultaneously.
