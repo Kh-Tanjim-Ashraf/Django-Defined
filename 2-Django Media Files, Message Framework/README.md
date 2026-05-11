@@ -19,3 +19,8 @@
    - <u>For the `GET` request</u>, bind the **product** object into the form "**ProductForm(instance=product)**" thorugh the instance param.
    - <u>For the `POST` request</u>, bind the **product** object along with the user-input data as **ProductForm(data=request.POST, instance=product)** considering the usage of '_data_' & '_instance_' param accordingly.
 4. [**Delete Record**] Initially retrieve the product record using id value passed through URL parameter. That record is passed to the **Template Engine** in the `GET` request to render it to the template so that the user can ensure about the product that is going to be deleted. A simple form with a _submit_ button is placed beneath the product information to make a `POST` request to delete the record from the DB. After a successful deletion of the product, the user will be redirected to the product-list page.
+5. [**Configure Media Files Handling**] To store media files during development, firstly, we need to make sure that the "**Product**" model has an <u>image field</u> to handle image files. <br/>
+   - We need to define the "**MEDIA_URL**" & "**MEDIA_ROOT**" variables as configs inside the "**settings.py**" file.
+     - **MEDIA_URL:** It's used to define URL-path inside the browser
+     - **MEDIA_ROOT:** It's used to define host machine's local directory path.
+   - Later joining static file serving config in the project's main "**urls.py**" file makes sure that this project is able to input the media files.
