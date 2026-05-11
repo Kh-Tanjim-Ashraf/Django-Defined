@@ -53,3 +53,16 @@ def productUpdate(request, pk):
         template_name='product/update-product.html',
         context=context
     )
+
+
+def productDelete(request, pk):
+    product=Product.objects.get(id=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product-list-FBV')
+    context={'product':product}
+    return render(
+        request=request,
+        template_name='product/delete-product.html',
+        context=context
+    )
