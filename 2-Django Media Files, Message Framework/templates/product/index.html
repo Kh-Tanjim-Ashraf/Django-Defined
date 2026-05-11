@@ -35,7 +35,7 @@
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <a href="">Edit</a> |
+            <a href="{% url 'product-update-FBV' product.id %}">Edit</a> |
             <a href="">Delete</a>
           </td>
         </tr>

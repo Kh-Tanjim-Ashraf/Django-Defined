@@ -28,3 +28,28 @@ def productCreate(request):
         template_name='product/create-product.html',
         context=context
     )
+
+
+def productUpdate(request, pk):
+    product=Product.objects.get(id=pk)
+    if request.method == 'POST':
+        # Bind the data to form
+        form=ProductForm(data=request.POST)
+        # Update the record if the form validates without error
+        if form.is_valid():
+            data=ProductForm(data=request.POST, instance=product)
+            data.save()
+            return redirect('product-list-FBV')
+    else:
+        form=ProductForm(instance=product)
+
+    context={
+        'form':form,
+        'product':product
+    }
+
+    return render(
+        request=request,
+        template_name='product/update-product.html',
+        context=context
+    )
