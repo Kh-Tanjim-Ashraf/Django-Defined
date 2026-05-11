@@ -13,3 +13,5 @@
 ### 📌Objective-1
 
 1. Initialize the basic setup for the Django development server till showing **<u>a product list page</u>** in the frontend.
+2. [**Create Record**] A Django model form class (**ProductForm()**) is created inside the "_product/forms/product_model_form.py_" file. Then I created the "**productCreate()**" function fo handle the product-create functionality. <br/>
+   Finally, after the product-creation operation gets completed the user will be redirected to the product-list page.
