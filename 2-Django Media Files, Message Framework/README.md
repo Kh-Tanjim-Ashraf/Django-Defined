@@ -2,8 +2,8 @@
 
 ### 🎯Objectives
 
-2. Create Model-Forms in Django function-based view (FBV) for the CRUD operations.
-3. Integrate media files to serve in the development server.
+2. ✅Create Model-Forms in Django function-based view (FBV) for the CRUD operations.
+3. ✅Integrate media files to serve in the development server.
 4. Handle CRUD operations using class-based view (CBV) & serve the media files.
 
 \*\* The initial setup of a Django Project w/ frontend is demonstrated inside another folder | Link
@@ -23,4 +23,10 @@
    - We need to define the "**MEDIA_URL**" & "**MEDIA_ROOT**" variables as configs inside the "**settings.py**" file.
      - **MEDIA_URL:** It's used to define URL-path inside the browser
      - **MEDIA_ROOT:** It's used to define host machine's local directory path.
-   - Later joining static file serving config in the project's main "**urls.py**" file makes sure that this project is able to input the media files.
+   - Later I've joined the <u>static file serving config</u> in the project's main "**urls.py**" file to ensure that this project can handle inputs of the media files. <br/>
+     <small>_NB: At this stage, we can locally store images of product through the default admin panel of Django_</small>
+   - Configure the <u>product creation form</u> to submit the associate product image to the backend function. Simply used an `<img>` field & include `enctype='multipart/form-data'` in the HTML form. <br/>
+     In the backend function (**productCreate()**), include the `request.FILES` as another parameter in the Django modelForm **ProductForm(....., files=request.FILES)**. After that, it'll be able to store the media files into the local storage of this project. In addition to to this, it'll store the path of the storage (_as string_) into the DB.
+   - Similar to the configuration of product creation form functionality, the <u>update product form</u> also got modified to update the product image along with other records.
+   - I also updated the <u>prodcut deletion page</u> to display product image before deleting the record.
+   - To <u>display images in the templates</u>, we need to use the `<img>` tag & define the image-path-string `{{ product.image.url }}` to the _src_ attribute.
