@@ -17,6 +17,14 @@
       <p>Product name: {{ product.name }}</p>
       <p>Quantity: {{ product.quantity }}</p>
       <p>Price: {{ product.price }}</p>
+      <p>
+        <img
+          src="{{ product.image.url }}"
+          alt="{{ product.name }}"
+          height="200"
+          width="200"
+        />
+      </p>
       <form method="post">
         {% csrf_token %}
         <button type="submit">Submit</button>

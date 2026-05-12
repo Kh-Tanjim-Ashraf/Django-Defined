@@ -20,6 +20,7 @@
           <th>Name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Image</th>
           <th>Update/Delete</th>
         </tr>
       </thead>
@@ -34,6 +35,13 @@
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
+          {% if product.image %}
+          <td>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" height="50" width="50">
+          </td>
+          {% else %}
+          <td style="text-align: center;"><b>-</b></td>
+          {% endif %}
           <td>
             <a href="{% url 'product-update-FBV' product.id %}">Edit</a> |
             <a href="{% url 'product-delete-FBV' product.id %}">Delete</a>
