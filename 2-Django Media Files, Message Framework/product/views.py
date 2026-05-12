@@ -37,7 +37,7 @@ def productUpdate(request, pk):
         form=ProductForm(data=request.POST)
         # Update the record if the form validates without error
         if form.is_valid():
-            data=ProductForm(data=request.POST, instance=product)
+            data=ProductForm(data=request.POST, files=request.FILES, instance=product)
             data.save()
             return redirect('product-list-FBV')
     else:
