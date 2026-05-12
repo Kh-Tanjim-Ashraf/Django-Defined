@@ -16,7 +16,7 @@ def productList(request):
 def productCreate(request):
     if request.method == 'POST':
         # Bind the data to the form
-        form = ProductForm(request.POST)
+        form = ProductForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             return redirect('product-list-FBV')
