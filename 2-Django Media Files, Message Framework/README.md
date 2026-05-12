@@ -4,7 +4,7 @@
 
 1. ✅Create Model-Forms in Django function-based view (FBV) for the CRUD operations.
 2. ✅Integrate media files to serve in the development server.
-3. Integrate Django's message framework.
+3. ✅Integrate Django's message framework.
 4. Handle CRUD operations using class-based view (CBV) & serve the media files.
 
 \*\* The initial setup of a Django Project w/ frontend is demonstrated inside another folder | Link
@@ -31,3 +31,10 @@
    - Similar to the configuration of product creation form functionality, the <u>update product form</u> also got modified to update the product image along with other records.
    - I also updated the <u>prodcut deletion page</u> to display product image before deleting the record.
    - To <u>display images in the templates</u>, we need to use the `<img>` tag & define the image-path-string `{{ product.image.url }}` to the _src_ attribute.
+
+#### 🤦‍♀️Bug Fix
+
+**The Mistake:** While implementing the product updation functionality, I thought the modelForm only required the `request.POST` method to validate. While configuring the **Django Message Framework**, I deleted all the pictures associated with the products. <br/> While updating the pictures (_adding new image_) of each product, I accidently tried to upload an image whose length of the filename exceeded 100 characters. Thus the Django program crashes displaying the data could not be changed since it's not validated.<br/>
+**The Solution:** I thought the `request.FILES` need to be validated along with `request.POST` data. After defining the files inside the "**ProductForm(...., files=request.FILES)**", I tried to re-submit the form with the same image. Finally I got a proper error message in the Django form without getting crashed.
+
+    > Ensure this filename has at most 100 characters (it has 117).

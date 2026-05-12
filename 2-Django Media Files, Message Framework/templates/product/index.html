@@ -11,6 +11,8 @@
       <a href="{%url 'product-create-FBV' %}">Create a new product</a>
     </p>
     <h3>Total Products: {{ products | length }}</h3>
+    <!-- Display messages send from the backend (Using Django's Message Framework) -->
+    {% for message in messages %} {{ message }} {% endfor %}
     <!-- Product Table -->
     <table>
       <thead>
@@ -37,10 +39,15 @@
           <td>{{ product.price }}</td>
           {% if product.image %}
           <td>
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" height="50" width="50">
+            <img
+              src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+              height="50"
+              width="50"
+            />
           </td>
           {% else %}
-          <td style="text-align: center;"><b>-</b></td>
+          <td style="text-align: center"><b>-</b></td>
           {% endif %}
           <td>
             <a href="{% url 'product-update-FBV' product.id %}">Edit</a> |

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from product.forms.product_model_form import ProductForm
 from .models import Product
+from django.contrib import messages
 
 
 def productList(request):
@@ -19,6 +20,7 @@ def productCreate(request):
         form = ProductForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request=request, message=f"{form.cleaned_data.get('name')}: Product created successfully!")
             return redirect('product-list-FBV')
     else:
         form = ProductForm()
@@ -34,11 +36,13 @@ def productUpdate(request, pk):
     product=Product.objects.get(id=pk)
     if request.method == 'POST':
         # Bind the data to form
-        form=ProductForm(data=request.POST)
+        # IMPORTANT: Files are required to send along w/ the request.POST data, in order to validate the media files. Otherwise, instead of displaying message regarding media-file errors, Django will encounter program crash displaying the data could not be updated since it could not be validated (because of the files are yet to validate)
+        form=ProductForm(data=request.POST, files=request.FILES)
         # Update the record if the form validates without error
         if form.is_valid():
             data=ProductForm(data=request.POST, files=request.FILES, instance=product)
             data.save()
+            messages.success(request=request, message=f"{form.cleaned_data.get('name')}: Product updated successfully!")
             return redirect('product-list-FBV')
     else:
         form=ProductForm(instance=product)
@@ -59,6 +63,7 @@ def productDelete(request, pk):
     product=Product.objects.get(id=pk)
     if request.method == 'POST':
         product.delete()
+        messages.success(request=request, message=f"{product.name}: Product deleted successfully!")
         return redirect('product-list-FBV')
     context={'product':product}
     return render(
