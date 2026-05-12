@@ -2,8 +2,9 @@
 
 ### 🎯Objectives
 
-2. ✅Create Model-Forms in Django function-based view (FBV) for the CRUD operations.
-3. ✅Integrate media files to serve in the development server.
+1. ✅Create Model-Forms in Django function-based view (FBV) for the CRUD operations.
+2. ✅Integrate media files to serve in the development server.
+3. Integrate Django's message framework.
 4. Handle CRUD operations using class-based view (CBV) & serve the media files.
 
 \*\* The initial setup of a Django Project w/ frontend is demonstrated inside another folder | Link
