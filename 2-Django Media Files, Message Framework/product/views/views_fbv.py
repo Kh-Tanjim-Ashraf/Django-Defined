@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from product.forms.product_model_form import ProductForm
-from .models import Product
+from product.models import Product
 from django.contrib import messages
 
 
@@ -9,7 +9,7 @@ def productList(request):
     context={'products':products}
     return render(
         request=request,
-        template_name='product/index.html',
+        template_name='product/fbv_templates/list-product.html',
         context=context
     )
 
@@ -21,13 +21,13 @@ def productCreate(request):
         if form.is_valid():
             form.save()
             messages.success(request=request, message=f"{form.cleaned_data.get('name')}: Product created successfully!")
-            return redirect('product-list-FBV')
+            return redirect('FBV_PRODUCT:product-list-FBV')
     else:
         form = ProductForm()
     context={'form':form}
     return render(
         request=request,
-        template_name='product/create-product.html',
+        template_name='product/fbv_templates/create-product.html',
         context=context
     )
 
@@ -43,7 +43,7 @@ def productUpdate(request, pk):
             data=ProductForm(data=request.POST, files=request.FILES, instance=product)
             data.save()
             messages.success(request=request, message=f"{form.cleaned_data.get('name')}: Product updated successfully!")
-            return redirect('product-list-FBV')
+            return redirect('FBV_PRODUCT:product-list-FBV')
     else:
         form=ProductForm(instance=product)
 
@@ -54,7 +54,7 @@ def productUpdate(request, pk):
 
     return render(
         request=request,
-        template_name='product/update-product.html',
+        template_name='product/fbv_templates/update-product.html',
         context=context
     )
 
@@ -64,10 +64,10 @@ def productDelete(request, pk):
     if request.method == 'POST':
         product.delete()
         messages.success(request=request, message=f"{product.name}: Product deleted successfully!")
-        return redirect('product-list-FBV')
+        return redirect('FBV_PRODUCT:product-list-FBV')
     context={'product':product}
     return render(
         request=request,
-        template_name='product/delete-product.html',
+        template_name='product/fbv_templates/delete-product.html',
         context=context
     )

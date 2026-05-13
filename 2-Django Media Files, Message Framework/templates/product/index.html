@@ -3,65 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products</title>
+    <title>Route to FBV & CBV</title>
   </head>
   <body>
-    <h1>Product List | Home</h1>
-    <p>
-      <a href="{%url 'product-create-FBV' %}">Create a new product</a>
-    </p>
-    <h3>Total Products: {{ products | length }}</h3>
-    <!-- Display messages send from the backend (Using Django's Message Framework) -->
-    {% for message in messages %} {{ message }} {% endfor %}
-    <!-- Product Table -->
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Product ID</th>
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Image</th>
-          <th>Update/Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Iterate over the products -->
-        {% for product in products %}
-        <tr>
-          <td>{{ forloop.counter }}</td>
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price }}</td>
-          <!-- Display product image if available, otherwise display "-" -->
-          {% if product.image %}
-          <td>
-            <img
-              src="{{ product.image.url }}"
-              alt="{{ product.name }}"
-              height="50"
-              width="50"
-            />
-          </td>
-          {% else %}
-          <td style="text-align: center"><b>-</b></td>
-          {% endif %}
-          <td>
-            <a href="{% url 'product-update-FBV' product.id %}">Edit</a> |
-            <a href="{% url 'product-delete-FBV' product.id %}">Delete</a>
-          </td>
-        </tr>
-        <!-- Show "No Product Found" if product table is empty; Doesn't require the if-else conditional block to check if the table is empty/not -->
-        {% empty %}
-        <tr>
-          <td colspan="6" style="text-align: center">
-            <b>No Product Found</b>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <h1>Route for Function-Based Views & Class-Based Views | Product</h1>
+
+    <p><a href="{% url 'FBV_PRODUCT:product-list-FBV' %}">Function-Based Views</a></p>
+    <p><a href="">Class-Based Views</a></p>
   </body>
 </html>

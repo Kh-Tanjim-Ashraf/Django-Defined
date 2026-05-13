@@ -38,3 +38,10 @@
 **The Solution:** I thought the `request.FILES` need to be validated along with `request.POST` data. After defining the files inside the "**ProductForm(...., files=request.FILES)**", I tried to re-submit the form with the same image. Finally I got a proper error message in the Django form without getting crashed.
 
     > Ensure this filename has at most 100 characters (it has 117).
+
+### 🛠️ File Structure Refactorization - Separate the FBV & CBV
+
+1. In order to segregate the class-based views & function-based views, initially I create a folders for **views** & inside of that I created 2 different views **views_fbv.py** & **views_cbv.py** files.
+2. Similarly, I separated the urls for CBVs & FBVs in the **urls** folder, inside the 2 files naming **urls_fbv.py** & **urls_cbv.py**.
+3. Also, I separated the template folders accordingly, creating **cbv_templates** & **fbv_templates**.
+4. Finally, I re-pointed the file paths respectively throughout the **views**, **urls** & **templates** files.
