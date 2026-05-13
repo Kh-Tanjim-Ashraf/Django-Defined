@@ -27,8 +27,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Show "No Product Found" if product table is empty -->
-        {% if products|length > 0 %}
         <!-- Iterate over the products -->
         {% for product in products %}
         <tr>
@@ -37,6 +35,7 @@
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
+          <!-- Display product image if available, otherwise display "-" -->
           {% if product.image %}
           <td>
             <img
@@ -54,13 +53,14 @@
             <a href="{% url 'product-delete-FBV' product.id %}">Delete</a>
           </td>
         </tr>
-        {% endfor %} {% else %}
+        <!-- Show "No Product Found" if product table is empty; Doesn't require the if-else conditional block to check if the table is empty/not -->
+        {% empty %}
         <tr>
           <td colspan="6" style="text-align: center">
             <b>No Product Found</b>
           </td>
         </tr>
-        {% endif %}
+        {% endfor %}
       </tbody>
     </table>
   </body>
