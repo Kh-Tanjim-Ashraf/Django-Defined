@@ -11,7 +11,7 @@
 
 <hr/>
 
-### 📌Objective-1
+### 📌Objective-1, 2, 3
 
 1. Initialize the basic setup for the Django development server till showing **<u>a product list page</u>** in the frontend.
 2. [**Create Record**] A Django model form class (**ProductForm()**) is created inside the "_product/forms/product_model_form.py_" file. Then I created the "**productCreate()**" function to handle the product-create functionality. <br/>
@@ -46,3 +46,10 @@
 2. Similarly, I separated the urls for CBVs & FBVs in the **urls** folder, inside the 2 files naming **urls_fbv.py** & **urls_cbv.py**.
 3. Also, I separated the template folders accordingly, creating **cbv_templates** & **fbv_templates**.
 4. Finally, I re-pointed the file paths respectively throughout the **views**, **urls** & **templates** files.
+
+<hr>
+
+### 📌Objective-4
+
+1. [**ListView**] I created a class named **ProductListView**, where I defined the `model` which Django will process the data from, the `template_name` attribute & the `context_object_name`. This is enough to view all the product records to the template.
+    - In the template `list-product.html`, we can display the product records by iterating over the object-name which is defined in the `context_object_name`. 

@@ -5,4 +5,5 @@ urlpatterns = [
     path('', Route_To_FBV_Or_CBV_Product.as_view(), name='Route_To_FBV_Or_CBV_Product'),
     # Function-based Views
     path('fbv/', include(('product.urls.urls_fbv', 'app_name'), namespace='FBV_PRODUCT')),
+    path('cbv/', include(('product.urls.urls_cbv', 'app_name'), namespace='CBV_PRODUCT')),
 ]
