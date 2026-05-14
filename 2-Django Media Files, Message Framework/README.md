@@ -52,4 +52,7 @@
 ### 📌Objective-4
 
 1. [**ListView**] I created a class named **ProductListView**, where I defined the `model` which Django will process the data from, the `template_name` attribute & the `context_object_name`. This is enough to view all the product records to the template.
-    - In the template `list-product.html`, we can display the product records by iterating over the object-name which is defined in the `context_object_name`. 
+   - In the template `list-product.html`, we can display the product records by iterating over the object-name which is defined in the `context_object_name`.
+2. [**DetailView**] Similar to the **ProductListView**, I created another class **ProductDetailView** to get the detail record of specific object. The attributes are the same, I defined the `model`, `template_name` & `context_object_name` attributes for this view class. For retrieving the product record by it's id, so I passed the product-id as URL-param of this URL of this view. <br/>
+   **But we need to consider that `DetailView` always expect `pk` as URL-param by default**. <br/>
+   Thus I defined `pk` as param in the url-path of the **DetailView**.

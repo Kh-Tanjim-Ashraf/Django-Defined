@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+  </head>
+  <body>
+    <h1>Product Detail | CBV</h1>
+    <p>
+      <a href="{%url 'CBV_PRODUCT:product-list-CBV' %}">Product List</a>
+    </p>
+    <!-- Product Detail Information -->
+    <h3>{{ product.name }}</h3>
+    <p>Quantity: {{ product.quantity }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>
+      <img
+        src="{{ product.image.url }}"
+        alt="{{ product.name }}"
+        height="200"
+        width="200"
+      />
+    </p>
+  </body>
+</html>

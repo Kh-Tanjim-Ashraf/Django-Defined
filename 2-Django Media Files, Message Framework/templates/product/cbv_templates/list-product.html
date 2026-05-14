@@ -8,9 +8,7 @@
   <body>
     <h1>Product List | Home | CBV</h1>
     <p>
-      <a href="{%url 'FBV_PRODUCT:product-create-FBV' %}"
-        >Create a new product</a
-      >
+      <a href="">Create a new product</a>
     </p>
     <h3>Total Products: {{ products | length }}</h3>
     <!-- Display messages send from the backend (Using Django's Message Framework) -->
@@ -51,8 +49,11 @@
           <td style="text-align: center"><b>-</b></td>
           {% endif %}
           <td>
-            <a href="{% url 'FBV_PRODUCT:product-update-FBV' product.id %}">Edit</a> |
-            <a href="{% url 'FBV_PRODUCT:product-delete-FBV' product.id %}">Delete</a>
+            <a href="{% url 'CBV_PRODUCT:product-detail-CBV' product.id %}"
+              >Edit</a
+            >
+            |
+            <a href="">Delete</a>
           </td>
         </tr>
         <!-- Show "No Product Found" if product table is empty; Doesn't require the if-else conditional block to check if the table is empty/not -->
