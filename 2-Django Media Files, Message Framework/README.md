@@ -31,6 +31,7 @@
    - Similar to the configuration of product creation form functionality, the <u>update product form</u> also got modified to update the product image along with other records.
    - I also updated the <u>prodcut deletion page</u> to display product image before deleting the record.
    - To <u>display images in the templates</u>, we need to use the `<img>` tag & define the image-path-string `{{ product.image.url }}` to the _src_ attribute.
+6. [**Django Message Framework**] I imported the `messages` from `django.contrib` package. After any successful form operations, I defined the `message.success(request=request, message='.....')`. The message framework is passed as an iteratble in the template, thus I used the _for-loop_ template tag to iterate the message to the template.
 
 #### 🤦‍♀️Bug Fix
 
