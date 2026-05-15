@@ -62,10 +62,14 @@
    The `success_url` attribute is required for the _CreateView_ class to navigate the user to another page after creating the record successfully. <br/>
    <small>NB: The _CreateView_ class doesn't require to handle the `request.FILES` in the backend, but it is required to define the _enctype='multipart/form-data'_ in the form rendered in the template.</small>
 4. [**UpdateView**] Similar to previous views, I defined the `model`, `template_name`, `form_class` & `success_url` attributes for the **ProductUpdateView** class view. But in the URL path of this class view, we are required to define the URL-param as `pk` since the _UpdateView_ class expects the param as `pk` like the **DetailView**.
-5. [**DeleteView**] Similar to previous generic views, I only defined the `model`, `template_name`, `success_url` attributes for the **DeleteView**. While mapping URL to the class view, It also required a parameter named `pk`. 
+5. [**DeleteView**] Similar to previous generic views, I only defined the `model`, `template_name`, `success_url` attributes for the **DeleteView**. While mapping URL to the class view, It also required a parameter named `pk`.
 
 > **NOTE:** Django generic views generally convert the single-model-object as the lowercase of the `model_name` which is passed in the template. <br/><br/>
 > In this context, the `Product` model is used in all the views, unlike the **ListView** class, in all other classes, I accessed the model-object as `product` in the template.
+
+6. [**Django Message Framework**] I integrated the message framework in class-based view differently than in function-based view. For the **CreateView** & the **UpdateView** classes, I extended the `SuccessMessageMixin` imported from the **django.contrib.messages.views**. Then only added the `success_message` attribute to pass the success message in the redirected page. <br/>
+   But for the **DeleteView**, if the message is added too late or if the **DeleteView** internal logic clears the request queue during the redirect, the message gets "lost" in transit. Thus I applied the `message` framework into the `get_success_url()` class-method. <br/>
+   **\*Note:** The `get_success_url()` is called by Django only after the object has been <u>successfully marked for deletion</u>.
 
 #### 🤦‍♀️Bug Fix
 
