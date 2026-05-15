@@ -5,7 +5,7 @@
 1. ✅Create Model-Forms in Django function-based view (FBV) for the CRUD operations.
 2. ✅Integrate media files to serve in the development server.
 3. ✅Integrate Django's message framework.
-4. Handle CRUD operations using class-based view (CBV) & serve the media files.
+4. ✅ Handle CRUD operations using class-based view (CBV) & serve the media files.
 
 \*\* The initial setup of a Django Project w/ frontend is demonstrated inside another folder | Link
 
@@ -62,6 +62,10 @@
    The `success_url` attribute is required for the _CreateView_ class to navigate the user to another page after creating the record successfully. <br/>
    <small>NB: The _CreateView_ class doesn't require to handle the `request.FILES` in the backend, but it is required to define the _enctype='multipart/form-data'_ in the form rendered in the template.</small>
 4. [**UpdateView**] Similar to previous views, I defined the `model`, `template_name`, `form_class` & `success_url` attributes for the **ProductUpdateView** class view. But in the URL path of this class view, we are required to define the URL-param as `pk` since the _UpdateView_ class expects the param as `pk` like the **DetailView**.
+5. [**DeleteView**] Similar to previous generic views, I only defined the `model`, `template_name`, `success_url` attributes for the **DeleteView**. While mapping URL to the class view, It also required a parameter named `pk`. 
+
+> **NOTE:** Django generic views generally convert the single-model-object as the lowercase of the `model_name` which is passed in the template. <br/><br/>
+> In this context, the `Product` model is used in all the views, unlike the **ListView** class, in all other classes, I accessed the model-object as `product` in the template.
 
 #### 🤦‍♀️Bug Fix
 

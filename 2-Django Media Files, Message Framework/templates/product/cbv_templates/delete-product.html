@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Product</title>
+  </head>
+  <body>
+    <h1>Delete Product</h1>
+
+    <p>
+      <a href="{% url 'CBV_PRODUCT:product-list-CBV' %}">Product List</a>
+    </p>
+
+    <p>Product Name: {{ product.name }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+    <p>Price: {{ product.price }}</p>
+    {% if product.image %}
+    <p>
+      <img
+        src="{{ product.image.url }}"
+        alt="{{ product.name }}"
+        height="200"
+        width="200"
+      />
+    </p>
+    {% else %}
+    <p><b>No image!</b></p>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

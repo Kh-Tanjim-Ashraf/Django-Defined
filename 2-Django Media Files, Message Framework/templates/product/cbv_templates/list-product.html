@@ -53,7 +53,7 @@
               >Detail</a
             >
             |
-            <a href="">Delete</a>
+            <a href="{% url 'CBV_PRODUCT:product-delete-CBV' product.id %}">Delete</a>
           </td>
         </tr>
         <!-- Show "No Product Found" if product table is empty; Doesn't require the if-else conditional block to check if the table is empty/not -->
