@@ -56,7 +56,8 @@
 2. [**DetailView**] Similar to the **ProductListView**, I created another class **ProductDetailView** to get the detail record of specific object. The attributes are the same, I defined the `model`, `template_name` & `context_object_name` attributes for this view class. For retrieving the product record by it's id, so I passed the product-id as URL-param of this URL of this view. <br/>
    **But we need to consider that `DetailView` always expect `pk` as URL-param by default**. <br/>
    Thus I defined `pk` as param in the url-path of the **DetailView**.
-3. [**CreateView**] Similar to previous generic views, in the createView class named **ProductCreateView**, I defined the `form_class` & `success_url` along with the `model` & `template_name` attributes. <br/>
+3. [**CreateView**] Similar to previous generic views, in the _CreateView_ class named **ProductCreateView**, I defined the `form_class` & `success_url` along with the `model` & `template_name` attributes. <br/>
    The `form_class` attribute carries out the modelForm (**ProductForm**) which is defined in the _product/forms/product_model_form.py_ file. <br/>
-   The `success_url` attribute is required for the createView class to navigate the user to another page after creating the record successfully. <br/>
-   <small>NB: The createView class doesn't require to handle the `request.FILES` in the backend, but it is required to define the _enctype='multipart/form-data'_ in the form rendered in the template.</small>
+   The `success_url` attribute is required for the _CreateView_ class to navigate the user to another page after creating the record successfully. <br/>
+   <small>NB: The _CreateView_ class doesn't require to handle the `request.FILES` in the backend, but it is required to define the _enctype='multipart/form-data'_ in the form rendered in the template.</small>
+4. [**UpdateView**] Similar to previous views, I defined the `model`, `template_name`, `form_class` & `success_url` attributes for the **ProductUpdateView** class view. But in the URL path of this class view, we are required to define the URL-param as `pk` since the _UpdateView_ class expects the param as `pk` like the **DetailView**.

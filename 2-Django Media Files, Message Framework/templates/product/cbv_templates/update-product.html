@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+</head>
+<body>
+    
+    <h1>Update Product | {{ product.name }} | CBV</h1>
+
+    <p>
+      <a href="{%url 'CBV_PRODUCT:product-list-CBV' %}">Product List</a>
+    </p>
+
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><button type="submit">Submit</button></p>
+        </form>
+    </div>
+    
+</body>
+</html>

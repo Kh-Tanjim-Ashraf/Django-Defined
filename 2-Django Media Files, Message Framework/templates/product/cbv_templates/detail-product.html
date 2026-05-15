@@ -11,6 +11,7 @@
       <a href="{%url 'CBV_PRODUCT:product-list-CBV' %}">Product List</a>
     </p>
     <!-- Product Detail Information -->
+    <p><a href="{% url 'CBV_PRODUCT:product-update-CBV' product.id %}">Edit</a></p>
     <h3>{{ product.name }}</h3>
     <p>Quantity: {{ product.quantity }}</p>
     <p>Price: {{ product.price }}</p>
