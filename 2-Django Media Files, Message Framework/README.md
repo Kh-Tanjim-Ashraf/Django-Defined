@@ -35,7 +35,8 @@
 
 #### 🤦‍♀️Bug Fix
 
-**The Mistake:** While implementing the product updation functionality, I thought the modelForm only required the `request.POST` method to validate. While configuring the **Django Message Framework**, I deleted all the pictures associated with the products. <br/> While updating the pictures (_adding new image_) of each product, I accidently tried to upload an image whose length of the filename exceeded 100 characters. Thus the Django program crashes displaying the data could not be changed since it's not validated.<br/>
+**The Mistake:** While implementing the product updation functionality, I thought the modelForm only required the `request.POST` method to validate. While configuring the **Django Message Framework**, I deleted all the pictures associated with the products. <br/> While updating the pictures (_adding new image_) of each product, I accidently tried to upload an image whose length of the filename exceeded 100 characters. Thus the Django program crashes displaying the data could not be changed since it's not validated.
+
 **The Solution:** I thought the `request.FILES` need to be validated along with `request.POST` data. After defining the files inside the "**ProductForm(...., files=request.FILES)**", I tried to re-submit the form with the same image. Finally I got a proper error message in the Django form without getting crashed.
 
     > Ensure this filename has at most 100 characters (it has 117).
@@ -61,3 +62,9 @@
    The `success_url` attribute is required for the _CreateView_ class to navigate the user to another page after creating the record successfully. <br/>
    <small>NB: The _CreateView_ class doesn't require to handle the `request.FILES` in the backend, but it is required to define the _enctype='multipart/form-data'_ in the form rendered in the template.</small>
 4. [**UpdateView**] Similar to previous views, I defined the `model`, `template_name`, `form_class` & `success_url` attributes for the **ProductUpdateView** class view. But in the URL path of this class view, we are required to define the URL-param as `pk` since the _UpdateView_ class expects the param as `pk` like the **DetailView**.
+
+#### 🤦‍♀️Bug Fix
+
+**The Mistake:** If a product has no image associate with itself, then the detail page raises an error since the `product_image.url` field is invoked.
+
+**The Solution:** It's always recommended to guard every image field used whenever in the template. Thus I defined the image field into an `if-else` template block.
