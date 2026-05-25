@@ -9,5 +9,27 @@
     <h1>Product List | FBV</h1>
 
     <p><a href="{% url 'home-page' %}">Home Page | FBV-CBV</a></p>
+
+    <!-- Product List -->
+    <div class="table">
+      <table border="1">
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3" style="text-align: center">No item available!</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
   </body>
 </html>

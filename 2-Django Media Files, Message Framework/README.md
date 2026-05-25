@@ -14,6 +14,9 @@
 ### 📌Objective-1, 2, 3
 
 1. Initialize the basic setup for the Django development server till showing **<u>a product list page</u>** in the frontend.
+
+   <small>**<u>Usage of `{% empty %}` Django Template:</u>** Instead of using the `if-else` block in the templates for showing <u>no records</u> message in case of empty empty DB table, we can apply more cleaner approach provided by the Django `{% for rec in records %}` template tag, known as `{% empty %}` inside the **for** tag.</small>
+
 2. [**Create Record**] A Django model form class (**ProductForm()**) is created inside the "_product/forms/product_model_form.py_" file. Then I created the "**productCreate()**" function to handle the product-create functionality. <br/>
    Finally, after the product-creation operation gets completed the user will be redirected to the product-list page.
 3. [**Update Record**] For the updation of record, data binding to the form is crucial regardless of a `GET` or `POST` request. Retrieved the specific product in the view function (**productUpdate()**) using the product id passed in through the URL parameter.
