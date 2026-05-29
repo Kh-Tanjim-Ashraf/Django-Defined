@@ -18,7 +18,7 @@
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-        {% for product in products %}
+        {% for product in paginated_prods %}
         <tr>
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
@@ -31,5 +31,24 @@
         {% endfor %}
       </table>
     </div>
+
+    <!-- Pagination -->
+     <div class="pagination">
+      <span class="step-link">
+        {% if paginated_prods.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ paginated_prods.previous_page_number }}">previous | </a>
+        {% endif %}
+      </span>
+      <span class="current">
+        Page {{ paginated_prods.number }} of {{ paginated_prods.paginator.num_pages }}
+      </span>
+      <span class="step-link">
+        {% if paginated_prods.has_next %}
+          <a href="?page={{ paginated_prods.next_page_number }}">| next</a>
+          <a href="?page={{ paginated_prods.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+     </div>
   </body>
 </html>
