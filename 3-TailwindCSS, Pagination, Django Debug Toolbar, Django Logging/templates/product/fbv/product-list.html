@@ -10,6 +10,8 @@
 
     <p><a href="{% url 'home-page' %}">Home Page | FBV-CBV</a></p>
 
+    <p><a href="{% url 'ProductApplication:productCreate-fbv' %}">Create New Product +</a></p>
+
     <!-- Product List -->
     <div class="table">
       <table border="1">
@@ -18,6 +20,7 @@
           <th>Product Name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Action</th>
         </tr>
         {% for product in paginated_prods %}
         <tr>
@@ -25,6 +28,10 @@
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
+          <td>
+            <a href="{% url 'ProductApplication:productUpdate-fbv' product.id %}">Update</a> |
+            <a href="{% url 'ProductApplication:productDelete-fbv' product.id %}">Delete</a>
+          </td>
         </tr>
         {% empty %}
         <tr>
