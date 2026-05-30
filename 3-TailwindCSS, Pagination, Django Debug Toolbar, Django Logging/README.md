@@ -14,7 +14,7 @@
 
           1.2.3# ❌ View the architectural flaw known as "Unpredictable Query Ordering".
 
-    1.3# Implement form validation using Django's model form while `form.is_valid()` method is invoked.
+    1.3# ✅ Implement form validation using Django's model form while `form.is_valid()` method is invoked.
 
 2.  Integrate TailwindCSS in Django Full Stack Project.
 

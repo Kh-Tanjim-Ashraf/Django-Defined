@@ -8,6 +8,8 @@
   <body>
     <h1>Delete Product | {{ product.name }} | FBV</h1>
 
+    <p><a href="{% url 'ProductApplication:productList-fbv' %}">Product List</a></p>
+
     <div class="form">
       <p>Product Name: {{ product.name }}</p>
       <p>Quantity: {{ product.quantity }}</p>

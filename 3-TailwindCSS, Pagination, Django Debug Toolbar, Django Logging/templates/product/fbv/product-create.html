@@ -8,6 +8,8 @@
   <body>
     <h1>Create Product | FBV</h1>
 
+    <p><a href="{% url 'ProductApplication:productList-fbv' %}">Product List</a></p>
+
     <div class="form">
       <form method="post">
         {% csrf_token %} 

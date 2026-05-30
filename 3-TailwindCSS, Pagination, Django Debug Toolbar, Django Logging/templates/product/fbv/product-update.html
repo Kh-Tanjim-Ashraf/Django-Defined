@@ -8,6 +8,8 @@
   <body>
     <h1>Update Product | {{ product.name }} | FBV</h1>
 
+    <p><a href="{% url 'ProductApplication:productList-fbv' %}">Product List</a></p>
+
     <div class="form">
       <form method="post">
         {% csrf_token %} 
