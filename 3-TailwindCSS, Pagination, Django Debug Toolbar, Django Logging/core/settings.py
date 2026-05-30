@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_unpredictable_query_ordering',          # Must match POSTGRES_DB
+        'USER': 'postgres',              # Must match POSTGRES_USER
+        'PASSWORD': 'postgres',  # Must match POSTGRES_PASSWORD
+        'HOST': '127.0.0.1',           # Points Django to the local host machine
+        'PORT': '5431',                # The port mapped to your machine
     }
 }
 
