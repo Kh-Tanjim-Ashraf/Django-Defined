@@ -2,13 +2,13 @@
 
 ### 🎯Objectives
 
-1. Integrate pagination while displaying record list in web page.
+1. ✅ Integrate pagination while displaying record list in web page.
 
-   1.1# Implement form validation using Django's model form while `form.is_valid()` method is invoked.
+   1.1# Insert 1000 product records into the product table to SQLite3, PostgreSQL & MySQL db using a Python script (_using the `runscript` command_).
 
-   1.2# Inject 100 product records into the product table to SQLite3, PostgreSQL & MySQL db using a Python script.
+   1.2# Integrate **PostgreSQL** & later **MySQL** database instead of **sqlite3** database, to view the architectural flaw known as "**Unpredictable Query Ordering**" caused by not using the **order_by()** method.
 
-   1.3# Integrate **PostgreSQL** & later **MySQL** database instead of **sqlite3** database, to view the architectural flaw known as "**Unpredictable Query Ordering**" caused by not using the **order_by()** method.
+   1.3# Implement form validation using Django's model form while `form.is_valid()` method is invoked.
 
 2. Integrate TailwindCSS in Django Full Stack Project.
 

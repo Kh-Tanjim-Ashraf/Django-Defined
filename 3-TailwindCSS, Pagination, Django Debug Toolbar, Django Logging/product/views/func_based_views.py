@@ -5,8 +5,8 @@ from django.db import connection
 
 
 def productList(request):
-    products = Product.objects.all().order_by('id')
-    paginator = Paginator(products, 2) # Display 5 products each page
+    products = Product.objects.all()
+    paginator = Paginator(products, 10) # Display 5 products each page
     page_num = request.GET.get('page')
     paginated_prods = paginator.get_page(page_num)
     

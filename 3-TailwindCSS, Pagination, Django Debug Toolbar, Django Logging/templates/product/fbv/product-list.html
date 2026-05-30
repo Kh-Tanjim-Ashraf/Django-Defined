@@ -14,12 +14,14 @@
     <div class="table">
       <table border="1">
         <tr>
+          <th>ID</th>
           <th>Product Name</th>
           <th>Quantity</th>
           <th>Price</th>
         </tr>
         {% for product in paginated_prods %}
         <tr>
+          <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.price }}</td>
