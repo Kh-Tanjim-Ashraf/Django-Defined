@@ -74,17 +74,28 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'db_unpredictable_query_ordering',          # Must match POSTGRES_DB
+#         'USER': 'postgres',              # Must match POSTGRES_USER
+#         'PASSWORD': 'postgres',  # Must match POSTGRES_PASSWORD
+#         'HOST': '127.0.0.1',           # Points Django to the local host machine
+#         'PORT': '5431',                # The port mapped to your machine
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_unpredictable_query_ordering',          # Must match POSTGRES_DB
-        'USER': 'postgres',              # Must match POSTGRES_USER
-        'PASSWORD': 'postgres',  # Must match POSTGRES_PASSWORD
-        'HOST': '127.0.0.1',           # Points Django to the local host machine
-        'PORT': '5431',                # The port mapped to your machine
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_unpredictable_query_ordering',          # Your database name
+        'USER': 'db_oquo_user',                  # Your MySQL username
+        'PASSWORD': 'db_password!',     # Your MySQL password
+        'HOST': 'localhost',             # Set to your server IP if remote
+        'PORT': '3307',                  # Default MySQL port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

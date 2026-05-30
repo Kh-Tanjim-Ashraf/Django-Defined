@@ -2,23 +2,30 @@
 
 ### 🎯Objectives
 
-1. ✅ Integrate pagination while displaying record list in web page.
+1.  ✅ Integrate pagination while displaying record list in web page.
 
-   1.1# Insert 1000 product records into the product table to SQLite3, PostgreSQL & MySQL db using a Python script (_using the `runscript` command_).
+    1.1# ✅ Insert 1000 product records into the product table to SQLite3, PostgreSQL & MySQL db using a Python script (_using the `runscript` command_).
 
-   1.2# Integrate **PostgreSQL** & later **MySQL** database instead of **sqlite3** database, to view the architectural flaw known as "**Unpredictable Query Ordering**" caused by not using the **order_by()** method.
+    1.2# ❌ Integrate **PostgreSQL** & later **MySQL** database instead of **sqlite3** database, to view the architectural flaw known as "**Unpredictable Query Ordering**" caused by not using the **order_by()** method.
 
-   1.3# Implement form validation using Django's model form while `form.is_valid()` method is invoked.
+          1.2.1# ✅ Integrated PostgreSQL w/ Django app.
 
-2. Integrate TailwindCSS in Django Full Stack Project.
+          1.2.2# ✅ Integrated MySQL w/ Django app.
 
-   2.1# Extend a base template to multiple other templates.
+          1.2.3# ❌ View the architectural flaw known as "Unpredictable Query Ordering".
 
-   2.2# Use static template tag to serve static files on the website.
+    1.3# Implement form validation using Django's model form while `form.is_valid()` method is invoked.
 
-3. Integrate Django Toolbar.
+2.  Integrate TailwindCSS in Django Full Stack Project.
 
-4. Integrate Django Logging.
+    2.1# Extend a base template to multiple other templates.
+
+    2.2# Use static template tag to serve static files on the website.
+
+3.  Integrate Django Toolbar.
+    3.1# Update the db structure, introducing <u>**One-To-One**</u>, <u>**One-To-Many**</u> & <u>**Many-To-Many**</u> relationships.
+
+4.  Integrate Django Logging.
 
 <hr/>
 
