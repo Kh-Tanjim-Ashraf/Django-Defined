@@ -16,7 +16,7 @@
 
     1.3# ✅ Implement form validation using Django's model form while `form.is_valid()` method is invoked.
 
-2.  Integrate TailwindCSS in Django Full Stack Project.
+2.  Integrate CSS in Django Full Stack Project.
 
     2.1# Extend a base template to multiple other templates.
 

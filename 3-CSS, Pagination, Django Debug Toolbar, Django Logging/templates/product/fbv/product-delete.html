@@ -1,0 +1,15 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+    <h1>Delete Product | {{ product.name }} | FBV</h1>
+
+    <div class="form">
+      <p>Product Name: {{ product.name }}</p>
+      <p>Quantity: {{ product.quantity }}</p>
+      <p>Price: {{ product.price }}</p>
+      <form method="post">
+        {% csrf_token %} 
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+{% endblock %}

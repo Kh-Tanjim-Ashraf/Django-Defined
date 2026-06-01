@@ -19,7 +19,10 @@ def productList(request):
         print(query['sql'])
         print()
     
-    context = {'paginated_prods':paginated_prods}
+    context = {
+        'title': 'Product List | FBV',
+        'paginated_prods':paginated_prods
+    }
     return render(
         request=request,
         template_name='./product/fbv/product-list.html',

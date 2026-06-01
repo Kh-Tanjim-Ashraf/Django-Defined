@@ -1,0 +1,13 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+    <h1>Update Product | {{ product.name }} | FBV</h1>
+
+    <div class="form">
+      <form method="post">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+      </form>
+    </div>
+{% endblock %}

@@ -1,16 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product | FBV</title>
-  </head>
-  <body>
+{% extends 'product/base.html' %}
+
+{% block content %}
     <h1>Product List | FBV</h1>
-
-    <p><a href="{% url 'home-page' %}">Home Page | FBV-CBV</a></p>
-
-    <p><a href="{% url 'ProductApplication:productCreate-fbv' %}">Create New Product +</a></p>
 
     <!-- Product List -->
     <div class="table">
@@ -59,5 +50,4 @@
         {% endif %}
       </span>
      </div>
-  </body>
-</html>
+{% endblock %}

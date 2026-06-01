@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {{ title }} {% endblock %}</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <section class="navbar">
+      <nav>
+        <div class="logo">Logo</div>
+        <div class="nav-items">
+          <ul>
+            <li><a href="{% url 'home-page' %}">Home Page | FBV-CBV</a></li>
+            <li><a href="{% url 'ProductApplication:productList-fbv' %}">Product List 📃</a></li>
+            <li><a href="{% url 'ProductApplication:productCreate-fbv' %}">Create Product ➕</a></li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+    <!-- Main Content -->
+    <section class="main-content">{% block content %}{% endblock %}</section>
+    <!-- Footer -->
+    <section class="footer">
+      <p><a href="{% url 'ProductApplication:productList-fbv' %}">Product List 📃</a></p>
+      <p><a href="{% url 'ProductApplication:productCreate-fbv' %}">Create Product ➕</a></p>
+    </section>
+  </body>
+</html>
