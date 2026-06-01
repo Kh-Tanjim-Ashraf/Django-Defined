@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 8rem 1fr 5rem;
+}
+
+.navbar {
+  background-color: #ffbcbc;
+}
+
+.main-content {
+  background-color: #fffcbc;
+}
+
+.footer {
+  background-color: #bcffd1;
+}
