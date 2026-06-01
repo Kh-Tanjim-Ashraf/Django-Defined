@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {{ title }} {% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- Placeholder for page-specific css -->
     {% block stylesheet %}{% endblock %}
@@ -14,12 +15,16 @@
       <!-- Navbar -->
       <section class="navbar">
         <nav>
-          <div class="logo">Logo</div>
+          <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+          </div>
           <div class="nav-items">
             <ul>
-              <li><a href="{% url 'home-page' %}">Home Page | FBV-CBV</a></li>
-              <li><a href="{% url 'ProductApplication:productList-fbv' %}">Product List 📃</a></li>
-              <li><a href="{% url 'ProductApplication:productCreate-fbv' %}">Create Product ➕</a></li>
+              <li><a href="{% url 'home-page' %}">Home</a></li>
+              <span>|</span>
+              <li><a href="{% url 'ProductApplication:productList-fbv' %}">Product List</a></li>
+              <span>|</span>
+              <li><a href="{% url 'ProductApplication:productCreate-fbv' %}">Create Product</a></li>
             </ul>
           </div>
         </nav>
