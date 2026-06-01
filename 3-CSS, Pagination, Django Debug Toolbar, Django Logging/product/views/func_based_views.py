@@ -40,6 +40,7 @@ def productCreate(request):
             return redirect('ProductApplication:productList-fbv')
     
     context = {
+        'title': 'Create Product | FBV',
         'form': form
     }
     return render(
@@ -60,6 +61,7 @@ def productUpdate(request, pk):
             return redirect('ProductApplication:productList-fbv')
     
     context = {
+        'title': f'Update Product | {product.name} | FBV',
         'form': form,
         'product': product
     }
@@ -78,6 +80,7 @@ def productDelete(request, pk):
         return redirect('ProductApplication:productList-fbv')
 
     context = {
+        'title': f'Delete Product | {product.name} | FBV',
         'product': product
     }
     return render(
