@@ -1,27 +1,38 @@
 {% extends 'product/base.html' %}
+{% load static %}
+
+{% comment %} Page specific stylesheet {% endcomment %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/product/list/style.css' %}">
+{% endblock %}
 
 {% block content %}
+  <div class="content">
     <h1>Product List | FBV</h1>
 
     <!-- Product List -->
     <div class="table">
-      <table border="1">
-        <tr>
-          <th>ID</th>
-          <th>Product Name</th>
+      <table>
+        <tr class="table-header">
+          <th class="theader-product-id">ID</th>
+          <th class="theader-product-name">Product Name</th>
           <th>Quantity</th>
           <th>Price</th>
           <th>Action</th>
         </tr>
         {% for product in paginated_prods %}
         <tr>
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price }}</td>
-          <td>
-            <a href="{% url 'ProductApplication:productUpdate-fbv' product.id %}">Update</a> |
-            <a href="{% url 'ProductApplication:productDelete-fbv' product.id %}">Delete</a>
+          <td class="table-id">{{ product.id }}</td>
+          <td class="table-name">{{ product.name }}</td>
+          <td class="table-quantity">{{ product.quantity }}</td>
+          <td class="table-price">{{ product.price }}</td>
+          <td class="table-action">
+            <a href="{% url 'ProductApplication:productUpdate-fbv' product.id %}" title="Edit">
+              <img src="{% static 'images/edit-icon.png' %}" alt="Edit">
+            </a>
+            <a href="{% url 'ProductApplication:productDelete-fbv' product.id %}" title="Delete">
+              <img src="{% static 'images/delete-icon.png' %}" alt="Delete">
+            </a>
           </td>
         </tr>
         {% empty %}
@@ -33,21 +44,20 @@
     </div>
 
     <!-- Pagination -->
-     <div class="pagination">
+    <div class="pagination">
       <span class="step-link">
         {% if paginated_prods.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ paginated_prods.previous_page_number }}">previous | </a>
+          <a href="?page=1">first</a>
+          <a href="?page={{ paginated_prods.previous_page_number }}">previous</a>
         {% endif %}
       </span>
-      <span class="current">
-        Page {{ paginated_prods.number }} of {{ paginated_prods.paginator.num_pages }}
-      </span>
+      <span class="current">{{ paginated_prods.number }}</span>
       <span class="step-link">
         {% if paginated_prods.has_next %}
-          <a href="?page={{ paginated_prods.next_page_number }}">| next</a>
-          <a href="?page={{ paginated_prods.paginator.num_pages }}">last &raquo;</a>
+          <a href="?page={{ paginated_prods.next_page_number }}">next</a>
+          <a href="?page={{ paginated_prods.paginator.num_pages }}">last</a>
         {% endif %}
       </span>
-     </div>
+    </div>
+  </div>
 {% endblock %}

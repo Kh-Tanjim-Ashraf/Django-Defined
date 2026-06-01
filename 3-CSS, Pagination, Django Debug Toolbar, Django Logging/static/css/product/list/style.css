@@ -1,0 +1,109 @@
+.content {
+  padding: 2rem 0;
+  width: 1200px;
+  /* background-color: #e93d3d; */
+  display: grid;
+  justify-content: center;
+  gap: 1rem;
+}
+
+h1 {
+  color: var(--secondary-color);
+  text-align: center;
+  font-size: 40px;
+}
+
+/* Table content */
+.table table {
+  width: 1200px;
+  border-collapse: collapse;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+table .table-header {
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color);
+}
+
+table tr {
+  transition: all 0.15s;
+}
+
+table tr:hover {
+  background-color: var(--accent-color);
+  text-shadow: 0 0 0.5px currentColor;
+}
+
+table tr th,
+table tr td {
+  padding: 1rem;
+}
+
+table tr td a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+table tr td a:nth-child(odd) {
+  padding-right: 1.5rem;
+}
+
+table tr td a img {
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.table-header th {
+  font-size: 18px;
+  letter-spacing: 0.1rem;
+}
+
+.table-header th.theader-product-id,
+.table-header th.theader-product-name {
+  text-align: start;
+}
+
+table tr:nth-child(odd) {
+  background-color: #d9d9d9;
+  transition: all 0.15s;
+}
+
+table tr:nth-child(odd):hover {
+  background-color: var(--accent-color);
+}
+
+.table-quantity,
+.table-price,
+.table-action {
+  text-align: center;
+}
+
+.pagination {
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.pagination .current {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.2rem;
+}
+
+.pagination .step-link a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  padding: 0.5rem;
+  border: 0.1rem solid var(--secondary-color);
+  border-radius: 0.2rem;
+  margin: 0 0.1rem;
+  transition: background-color 0.15s;
+}
+
+.pagination .step-link a:hover {
+  background-color: var(--accent-color);
+}

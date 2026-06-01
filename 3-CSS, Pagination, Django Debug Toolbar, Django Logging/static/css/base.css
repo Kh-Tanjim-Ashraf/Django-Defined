@@ -2,7 +2,7 @@
   /* Color Rule: 60-30-10 */
   --primary-color: #f6f6e9;
   --secondary-color: #272727;
-  --tertiary-color: #7d9b76;
+  --accent-color: #7d9b76;
 }
 
 * {
@@ -44,7 +44,7 @@
 }
 
 .navbar .nav-items {
-  width: 800px;
+  width: 1000px;
   /* background-color: #889cff; */
 }
 
@@ -53,7 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 16px;
   padding: 0.5rem 0;
 }
 
@@ -61,14 +61,14 @@
   text-decoration: none;
   padding: 0 50px;
   text-transform: uppercase;
-  letter-spacing: 2;
+  letter-spacing: 0.2rem;
   color: var(--primary-color);
   transition: color 0.2s;
   cursor: pointer;
 }
 
 .nav-items ul a:hover {
-  color: var(--tertiary-color);
+  color: var(--accent-color);
 }
 
 .nav-items ul span {
@@ -79,7 +79,10 @@
 
 /* Main Content */
 .main-content {
-  background-color: #fffcbc;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  display: grid;
+  justify-content: center;
 }
 
 /* Footer */
@@ -100,5 +103,5 @@
 }
 
 .footer a:hover {
-  color: var(--tertiary-color);
+  color: var(--accent-color);
 }
