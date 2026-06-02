@@ -12,7 +12,10 @@
     <form method="post">
       {% csrf_token %} 
       {{ form.as_p }}
-      <button type="submit">Create</button>
+      <p class="buttons">
+        <a href="{% url 'ProductApplication:productList-fbv' %}">Cancel</a>
+        <button type="submit">Create</button>
+      </p>
     </form>
   </div>
 {% endblock %}

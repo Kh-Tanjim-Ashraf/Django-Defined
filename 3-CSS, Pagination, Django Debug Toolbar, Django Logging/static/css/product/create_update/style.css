@@ -55,22 +55,43 @@ form p input:focus {
   box-shadow: 0 2px 6px var(--accent-color);
 }
 
-form button {
+form p.buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form a {
+  text-decoration: none;
+  text-align: center;
+  color: var(--secondary-color);
+  transition: all 0.15s ease;
+}
+
+.form a:hover {
+  background-color: var(--accent-color);
+}
+
+form button,
+form a {
   width: 30%;
   margin: 0 auto;
   padding: 0.5rem;
   font-size: 16px;
   letter-spacing: 0.2rem;
   font-weight: bold;
-  color: var(--secondary-color);
   border: 0.5px solid var(--accent-color);
   border-radius: 0.4rem;
+}
+
+form button[type="submit"] {
+  color: var(--secondary-color);
   background-color: var(--accent-color);
-  outline: 1px solid var(--secondary-color);
   transition: all 0.15s ease;
 }
 
-form button:hover {
+form button[type="submit"]:hover {
   color: var(--primary-color);
   background-color: var(--secondary-color);
   border: 0.6px solid var(--secondary-color);

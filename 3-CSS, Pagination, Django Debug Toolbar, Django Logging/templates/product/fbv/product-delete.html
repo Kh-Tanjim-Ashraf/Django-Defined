@@ -1,15 +1,21 @@
 {% extends 'product/base.html' %}
+{% load static %}
+
+{% comment %} Page specific stylesheet {% endcomment %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/product/delete/style.css' %}">
+{% endblock %}
 
 {% block content %}
+  <div class="form">
     <h1>Delete Product | {{ product.name }} | FBV</h1>
-
-    <div class="form">
-      <p>Product Name: {{ product.name }}</p>
-      <p>Quantity: {{ product.quantity }}</p>
-      <p>Price: {{ product.price }}</p>
-      <form method="post">
-        {% csrf_token %} 
-        <button type="submit">Delete</button>
-      </form>
-    </div>
+    <p><span>Product Name:</span> {{ product.name }}</p>
+    <p><span>Quantity:</span> {{ product.quantity }}</p>
+    <p><span>Price:</span> {{ product.price }}</p>
+    <form method="post">
+      {% csrf_token %} 
+      <a href="{% url 'ProductApplication:productList-fbv' %}">Cancel</a>
+      <button type="submit">Delete</button>
+    </form>
+  </div>
 {% endblock %}
