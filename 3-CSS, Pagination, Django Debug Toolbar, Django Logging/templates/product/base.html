@@ -30,7 +30,11 @@
         </nav>
       </section>
       <!-- Main Content -->
-      <section class="main-content">{% block content %}{% endblock %}</section>
+      <section class="main-content">
+        <div class="content">
+          {% block content %}{% endblock %}
+        </div>
+      </section>
       <!-- Footer -->
       <section class="footer">
         <p><a href="{% url 'ProductApplication:productList-fbv' %}">Product List</a></p>

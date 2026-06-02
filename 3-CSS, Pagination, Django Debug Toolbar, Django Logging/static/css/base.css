@@ -63,7 +63,7 @@
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   color: var(--primary-color);
-  transition: color 0.2s;
+  transition: color 0.15s;
   cursor: pointer;
 }
 
@@ -85,6 +85,16 @@
   justify-content: center;
 }
 
+.content {
+  padding: 2rem 0;
+  width: 1200px;
+  /* background-color: #e93d3d; */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* Footer */
 .footer {
   background-color: var(--secondary-color);
@@ -98,7 +108,7 @@
   color: var(--primary-color);
   padding: 0 30px;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.15s;
   font-size: 18px;
 }
 

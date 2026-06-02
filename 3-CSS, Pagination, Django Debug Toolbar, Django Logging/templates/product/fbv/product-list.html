@@ -7,57 +7,55 @@
 {% endblock %}
 
 {% block content %}
-  <div class="content">
-    <h1>Product List | FBV</h1>
+  <h1>Product List | FBV</h1>
 
-    <!-- Product List -->
-    <div class="table">
-      <table>
-        <tr class="table-header">
-          <th class="theader-product-id">ID</th>
-          <th class="theader-product-name">Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Action</th>
-        </tr>
-        {% for product in paginated_prods %}
-        <tr>
-          <td class="table-id">{{ product.id }}</td>
-          <td class="table-name">{{ product.name }}</td>
-          <td class="table-quantity">{{ product.quantity }}</td>
-          <td class="table-price">{{ product.price }}</td>
-          <td class="table-action">
-            <a href="{% url 'ProductApplication:productUpdate-fbv' product.id %}" title="Edit">
-              <img src="{% static 'images/edit-icon.png' %}" alt="Edit">
-            </a>
-            <a href="{% url 'ProductApplication:productDelete-fbv' product.id %}" title="Delete">
-              <img src="{% static 'images/delete-icon.png' %}" alt="Delete">
-            </a>
-          </td>
-        </tr>
-        {% empty %}
-        <tr>
-          <td colspan="3" style="text-align: center">No item available!</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
+  <!-- Product List -->
+  <div class="table">
+    <table>
+      <tr class="table-header">
+        <th class="theader-product-id">ID</th>
+        <th class="theader-product-name">Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+      {% for product in paginated_prods %}
+      <tr>
+        <td class="table-id">{{ product.id }}</td>
+        <td class="table-name">{{ product.name }}</td>
+        <td class="table-quantity">{{ product.quantity }}</td>
+        <td class="table-price">{{ product.price }}</td>
+        <td class="table-action">
+          <a href="{% url 'ProductApplication:productUpdate-fbv' product.id %}" title="Edit">
+            <img src="{% static 'images/edit-icon.png' %}" alt="Edit">
+          </a>
+          <a href="{% url 'ProductApplication:productDelete-fbv' product.id %}" title="Delete">
+            <img src="{% static 'images/delete-icon.png' %}" alt="Delete">
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" style="text-align: center">No item available!</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
 
-    <!-- Pagination -->
-    <div class="pagination">
-      <span class="step-link">
-        {% if paginated_prods.has_previous %}
-          <a href="?page=1">first</a>
-          <a href="?page={{ paginated_prods.previous_page_number }}">previous</a>
-        {% endif %}
-      </span>
-      <span class="current">{{ paginated_prods.number }}</span>
-      <span class="step-link">
-        {% if paginated_prods.has_next %}
-          <a href="?page={{ paginated_prods.next_page_number }}">next</a>
-          <a href="?page={{ paginated_prods.paginator.num_pages }}">last</a>
-        {% endif %}
-      </span>
-    </div>
+  <!-- Pagination -->
+  <div class="pagination">
+    <span class="step-link">
+      {% if paginated_prods.has_previous %}
+        <a href="?page=1">first</a>
+        <a href="?page={{ paginated_prods.previous_page_number }}">previous</a>
+      {% endif %}
+    </span>
+    <span class="current">{{ paginated_prods.number }}</span>
+    <span class="step-link">
+      {% if paginated_prods.has_next %}
+        <a href="?page={{ paginated_prods.next_page_number }}">next</a>
+        <a href="?page={{ paginated_prods.paginator.num_pages }}">last</a>
+      {% endif %}
+    </span>
   </div>
 {% endblock %}

@@ -1,13 +1,18 @@
 {% extends 'product/base.html' %}
+{% load static %}
+
+{% comment %} Page specific stylesheet {% endcomment %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/product/create_update/style.css' %}">
+{% endblock %}
 
 {% block content %}
+  <div class="form">
     <h1>Update Product | {{ product.name }} | FBV</h1>
-
-    <div class="form">
-      <form method="post">
-        {% csrf_token %} 
-        {{ form.as_p }}
-        <button type="submit">Update</button>
-      </form>
-    </div>
+    <form method="post">
+      {% csrf_token %} 
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+  </div>
 {% endblock %}
