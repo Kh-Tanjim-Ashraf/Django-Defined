@@ -41,7 +41,8 @@ form p label {
   font-size: 25px;
 }
 
-form p input {
+form p input,
+form p select {
   background-color: var(--primary-color);
   padding: 0.5rem;
   font-size: 16px;
@@ -51,7 +52,8 @@ form p input {
   transition: box-shadow 0.15s ease;
 }
 
-form p input:focus {
+form p input:focus,
+form p select:focus {
   box-shadow: 0 2px 6px var(--accent-color);
 }
 

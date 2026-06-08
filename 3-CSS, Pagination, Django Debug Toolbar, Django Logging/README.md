@@ -16,16 +16,19 @@
 
     1.3# ✅ Implement form validation using Django's model form while `form.is_valid()` method is invoked.
 
-2.  Integrate CSS in Django Full Stack Project.
+2.  ✅ Integrate CSS in Django Full Stack Project.
 
     2.1# ✅ Extend a base template to multiple other templates.
 
     2.2# ✅ Use static template tag to serve static files on the website.
 
 3.  Integrate Django Toolbar.
+
     3.1# Update the db structure, introducing <u>**One-To-One**</u>, <u>**One-To-Many**</u> & <u>**Many-To-Many**</u> relationships.
 
 4.  Integrate Django Logging.
+
+5.  Integrate Django-Slik for profiling.
 
 <hr/>
 

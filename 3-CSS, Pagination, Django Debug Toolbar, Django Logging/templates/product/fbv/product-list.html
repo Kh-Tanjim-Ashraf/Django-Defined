@@ -15,6 +15,7 @@
       <tr class="table-header">
         <th class="theader-product-id">ID</th>
         <th class="theader-product-name">Product Name</th>
+        <th class="theader-category">Category</th>
         <th>Quantity</th>
         <th>Price</th>
         <th>Action</th>
@@ -23,6 +24,7 @@
       <tr>
         <td class="table-id">{{ product.id }}</td>
         <td class="table-name">{{ product.name }}</td>
+        <td class="table-category">{{ product.category.name }}</td>
         <td class="table-quantity">{{ product.quantity }}</td>
         <td class="table-price">{{ product.price }}</td>
         <td class="table-action">
