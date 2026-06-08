@@ -6,7 +6,11 @@ from product.forms.product_model_form import ProductForm
 
 
 def productList(request):
-    products = Product.objects.all().order_by('-id') # Best practise for showcasing paginated data; avoids "Unordered Query Odering"
+    # products = Product.objects.all().order_by('-id')
+    # Query Optimization; Lately added "select_related" to fetch all the related objects by using single DB query utilizing SQL "JOIN"
+    products = Product.objects.select_related('category').all().order_by('-id') # Must use "order_by()"; Best practise for showcasing paginated data; avoids "Unordered Query Odering"
+    
+    # Pagination
     paginator = Paginator(products, 10) # Display 5 products each page
     page_num = request.GET.get('page')
     paginated_prods = paginator.get_page(page_num)
