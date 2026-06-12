@@ -53,6 +53,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",  # Django Debug Toolbar Middleware
 ]
 
+# Required for the Django Debug Toolbar to show in internal specified IPs only
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -94,13 +95,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_unpredictable_query_ordering',          # Your database name
-        'USER': 'db_oquo_user',                  # Your MySQL username
-        'PASSWORD': 'db_password!',     # Your MySQL password
-        'HOST': 'localhost',             # Set to your server IP if remote
-        'PORT': '3307',                  # Default MySQL port
-    }
+        'ENGINE': 'django.db.backends.mysql',       # MySQL engine
+        'NAME': 'db_unpredictable_query_ordering',  # DB name
+        'USER': 'db_oquo_user',                     # DB username
+        'PASSWORD': 'db_password!',                 # DB password
+        'HOST': 'localhost',                        # DB server IP
+        'PORT': '3307',                             # MySQL port
+    },
+    
+    # Remote DB (Private Network)
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'db_unpredictable_query_ordering',
+    #     'USER': 'db_oquo_user',
+    #     'PASSWORD': 'db_password!',
+    #     'HOST': '192.168.0.9',
+    #     'PORT': '3307',
+    # }
 }
 
 # Password validation

@@ -25,7 +25,7 @@
         <td class="table-id">{{ product.id }}</td>
         <td class="table-name">{{ product.name }}</td>
         <td class="table-category">{{ product.category.name }}</td>
-        <td class="table-quantity">{{ product.quantity }}</td>
+        <td class="table-quantity">{{ product.stock.quantity }}</td>
         <td class="table-price">{{ product.price }}</td>
         <td class="table-action">
           <a href="{% url 'ProductApplication:productUpdate-fbv' product.id %}" title="Edit">

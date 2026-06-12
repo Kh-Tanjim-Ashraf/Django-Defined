@@ -1,11 +1,11 @@
 import csv
 import os
-from product.models import Product, Category
+from product.models import Product, Stock
 
 def run():
     # Construct the absolute path to the CSV file
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    csv_path = os.path.join(base_dir, 'scripts', 'seeds/product_data.csv')
+    csv_path = os.path.join(base_dir, 'scripts', 'seeds/stock_data.csv')
 
     print(f"Reading data from: {csv_path}")
 
@@ -16,18 +16,18 @@ def run():
         count = 0
 
         for row in reader:
-            # Adjust row indices (row[0], row[1], etc.) based on your CSV columns
-            print(count, row)
-            obj, created = Product.objects.get_or_create(
-                name=row[0],
-                price=row[1],
-                category=Category.objects.get(id=row[2]),
+            print(row)
+            obj, created = Stock.objects.get_or_create(
+                product_id = Product.objects.get(id=row[0]),
+                quantity = row[1]
             )
-            
+
             if created:
                 count += 1
             else:
                 print(f"Skipped (already exists): {obj}")
 
-        print(f"Total {count} records have been created!")     
+        print(f"Total {count} records have been created!")    
+
+
 
