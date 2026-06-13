@@ -24,7 +24,7 @@
 
 3.  Integrate Django Toolbar.
 
-    3.1# Update the db structure, introducing <u>**One-To-One**</u>, ✅<u>**One-To-Many**</u> & <u>**Many-To-Many**</u> relationships.
+    3.1# Update the db structure, introducing ✅<u>**One-To-One**</u>, ✅<u>**One-To-Many**</u> & ✅<u>**Many-To-Many**</u> relationships.
 
 4.  Integrate Django Logging.
 
