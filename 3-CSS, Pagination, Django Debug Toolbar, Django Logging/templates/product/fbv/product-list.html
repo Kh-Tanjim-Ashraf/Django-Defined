@@ -25,6 +25,11 @@
         <td class="table-id">{{ product.id }}</td>
         <td class="table-name">{{ product.name }}</td>
         <td class="table-category">{{ product.category.all|join:", " }}</td>
+        {% comment %} <td class="table-category">
+          {% for cate in product.category.all %}
+          <span>{{ cate.name }}, </span>
+          {% endfor %}
+        </td> {% endcomment %}
         <td class="table-quantity">{{ product.stock.quantity }}</td>
         <td class="table-price">{{ product.price }}</td>
         <td class="table-action">

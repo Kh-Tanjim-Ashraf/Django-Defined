@@ -43,5 +43,8 @@ class Stock(TimestampMixins):
 # One-To-Many Relationship
 class Review(TimestampMixins):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
-    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-    review_content = models.TextField()
+    rating = models.PositiveSmallIntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    review_content = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.product.name
