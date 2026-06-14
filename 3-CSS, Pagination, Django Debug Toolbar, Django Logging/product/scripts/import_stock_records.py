@@ -18,7 +18,7 @@ def run():
         for row in reader:
             print(row)
             obj, created = Stock.objects.get_or_create(
-                product_id = Product.objects.get(id=row[0]),
+                product = Product.objects.get(id=row[0]),
                 quantity = row[1]
             )
 

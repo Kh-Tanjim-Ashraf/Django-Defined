@@ -96,9 +96,9 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',       # MySQL engine
-        'NAME': 'db_unpredictable_query_ordering',  # DB name
-        'USER': 'db_oquo_user',                     # DB username
-        'PASSWORD': 'db_password!',                 # DB password
+        'NAME': 'inventory_system',                 # DB name
+        'USER': 'dj_user',                          # DB username
+        'PASSWORD': 'dj_password!',                 # DB password
         'HOST': 'localhost',                        # DB server IP
         'PORT': '3307',                             # MySQL port
     },

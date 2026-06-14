@@ -21,7 +21,6 @@ def run():
             obj, created = Product.objects.get_or_create(
                 name=row[0],
                 price=row[1],
-                category=Category.objects.get(id=row[2]),
             )
             
             if created:

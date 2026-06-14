@@ -9,7 +9,7 @@ def productList(request):
     # products = Product.objects.all().order_by('-id')
 
     # Query Optimization: Lately added "select_related" to fetch all the related objects by using single DB query utilizing SQL "JOIN"
-    products = Product.objects.select_related('category', 'stock').all().order_by('-id') # Must use "order_by()"; Best practise for showcasing paginated data; avoids "Unordered Query Odering"
+    products = Product.objects.select_related('stock').prefetch_related('category').all().order_by('-id') # Must use "order_by()"; Best practise for showcasing paginated data; avoids "Unordered Query Odering"
     
     # Pagination
     paginator = Paginator(products, 10) # Display 5 products each page
@@ -17,7 +17,9 @@ def productList(request):
     paginated_prods = paginator.get_page(page_num)
     
     # Forcefully invoke the queryset to view the raw SQL query containing Offset & Limit
-    # list(paginated_prods)
+    # print(list(paginated_prods))
+    # for prod in paginated_prods:
+    #     print([cate.name for cate in prod.category.all()])
 
     # for query in connection.queries:
     #     print()
