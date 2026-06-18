@@ -18,15 +18,19 @@
 
 2.  ✅ Integrate CSS in Django Full Stack Project.
 
-    2.1# ✅ Extend a base template to multiple other templates.
+    2.1# Extend a base template to multiple other templates.
 
-    2.2# ✅ Use static template tag to serve static files on the website.
+    2.2# Use static template tag to serve static files on the website.
 
-3.  Integrate Django Toolbar.
+3.  ✅ Integrate Django Toolbar.
 
-    3.1# Update the db structure, introducing ✅<u>**One-To-One**</u>, ✅<u>**One-To-Many**</u> & ✅<u>**Many-To-Many**</u> relationships.
+    3.1# Update the db structure, introducing <u>**One-To-One**</u>, <u>**One-To-Many**</u> & <u>**Many-To-Many**</u> relationships.
+
+    Showcase the main ERD.
 
 4.  Integrate Django Logging.
+
+    4.1 Implement DB Logging.
 
 5.  Integrate Django-Slik for profiling.
 
