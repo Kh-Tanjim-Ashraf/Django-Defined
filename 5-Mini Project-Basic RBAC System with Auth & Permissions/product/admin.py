@@ -54,7 +54,7 @@ class ProductAdmin(admin.ModelAdmin):
                 )
 
             else:
-                # Staff Update; Similarly check if record exists in 'ProductUpdateReview' table. If exists, prevent the staff to create another record in that table, otherwise, simply create a record with review_status='Pending', without letting that staff to directly udpate the record in 'Product' table.
+                # Staff Update; Similarly check if record exists in 'ProductUpdateReview' table. If exists, prevent the staff to create another record in that table, otherwise, simply create a record with review_status='Pending' there, without letting that staff to directly udpate the record in 'Product' table.
 
                 if self.check_duplicate(request, obj):
                     return # Prevent staff to update the product detail directly
@@ -74,17 +74,15 @@ class ProductAdmin(admin.ModelAdmin):
         else:
             # Record create logic
 
-            # Check if a record w/ same name, price & status='Pending' exists. Only a single record will exists by chance.
+            # Check if a record w/ same name & price. Only a single record will exists by chance.
             if ProductCreateReview.objects.filter(
                 proposed_name=obj.name,
                 proposed_price=obj.price,
-                review_status='P'
             ).exists():
                 # If though it exists, then change it's status to 'Cancelled' & attach the product w/ the record as FK
                 pcr_obj = ProductCreateReview.objects.get(
                     proposed_name=obj.name,
                     proposed_price=obj.price,
-                    review_status='P'
                 )
 
                 # Both queries must complete, otherwise rollback
@@ -105,7 +103,7 @@ class ProductAdmin(admin.ModelAdmin):
                 return # Stop to execute `super().save()` method again
                 
             else:
-                # If no create review record with 'Pending' status found in 'ProductCreateReview' table, then create a record in that table.
+                # If no create-review-record found in 'ProductCreateReview' table with same name & price, then create a record in that table.
 
                 with transaction.atomic():
                     # Create the `Product` first, in order to define the record as FK in `ProductCreateReview`
@@ -183,10 +181,8 @@ class ProductCreateReviewAdmin(admin.ModelAdmin):
                 # Admin doesn't have the option to change the review status while creating a new review record
                 obj.review_status = 'A'
 
-                # Check if record doesn't exist in the 'Product' table
-                if not obj.product:
-                    # Create a record in "Product" table automatically;
-                    ProductApprovalService.approve(review_obj=obj)
+                # Create a record in "Product" table automatically;
+                ProductApprovalService.approve(review_obj=obj)
                     
             else:
                 # Created by Staff

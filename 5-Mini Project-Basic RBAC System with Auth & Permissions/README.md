@@ -2,7 +2,7 @@
 
 ### 🎯Objectives
 
-NB: This mini project moderately utilizes Django's default admin panel.
+<small>NB: This mini project moderately utilizes Django's default admin panel. Implemented basic approval system on 'Product' create/update workflow based on Admin's review.</small>
 
 1.  Create a basic Role-Based Access Control (RBAC) system.
     - User Roles:
@@ -20,6 +20,14 @@ NB: This mini project moderately utilizes Django's default admin panel.
     - User
     - UserProfile
 
+    An ER diagram of this project is added <u>[**here**](./resources/ER%20Diagram.md)</u>.
+
+<hr>
+
+#### Implemented <u>Review-Approval Pattern</u> in "Product" Create/Update Operations
+
+A sequence diagram is added <u>[**here**](./resources/Sequence%20Diagram.md)</u>.
+
 4.  Product record <u>**creation workflow:**</u> (_<small>in Django Admin Panel</small>_)
 
     <u>**Admin:**</u> Create Product record.
@@ -36,21 +44,23 @@ NB: This mini project moderately utilizes Django's default admin panel.
 
     <u>**User:**</u> Not allowed.
 
+<hr>
+
 6.  Product record <u>**read workflow:**</u>
 
         💡 Allowed User Roles: Admin, Staff, User
 
-    **User:** Will view paginated product list in a separate webpage.
+    **User:** View paginated product list in a separate webpage.
 
 7.  User & UserProfile record <u>**creation workflow:**</u>
 
-        💡When a user account is created utilizing Django's default user model, a user profile gets created by the system associated with that user account.
+        💡When a user account is created utilizing Django's default User model, a user profile gets created by the system associated with that account.
 
     <u>**Admin:**</u> Create user account for both admin & staff | Django Admin Panel.
 
     <u>**Staff:**</u> Not allowed.
 
-    <u>**User:**</u> Can create account from webpage.
+    <u>**User:**</u> Create account from webpage.
 
         💡1:1 relationship between User & UserProfile models.
 
