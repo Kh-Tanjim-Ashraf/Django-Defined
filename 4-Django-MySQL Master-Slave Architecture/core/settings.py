@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'product.middleware.AdminRouterMiddleware',     # Product App's Admin-page request identifier-middleware
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -76,7 +77,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',       # MySQL engine
-        'NAME': 'product_only',                 # DB name
+        'NAME': 'product_only',                     # DB name
         'USER': 'dj_user',                          # DB username
         'PASSWORD': 'dj_password!',                 # DB password
         'HOST': 'localhost',                        # DB server IP
@@ -84,7 +85,7 @@ DATABASES = {
     },
     'slave': {
         'ENGINE': 'django.db.backends.mysql',       # MySQL engine
-        'NAME': 'product_only',                 # DB name
+        'NAME': 'product_only',                     # DB name
         'USER': 'dj_user',                          # DB username
         'PASSWORD': 'dj_password!',                 # DB password
         'HOST': 'localhost',                        # DB server IP
