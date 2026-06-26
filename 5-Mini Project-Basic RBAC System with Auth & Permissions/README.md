@@ -12,6 +12,8 @@
 
 2.  Implement basic session-based authentication.
 
+    2.1# Scrutinize the nuts & bolts of Django sessions.
+
 3.  **DB Tables:**
     - Product
     - ProductCreateReview
@@ -20,13 +22,13 @@
     - User
     - UserProfile
 
-    An ER diagram of this project is added <u>[**here**](./resources/ER%20Diagram.md)</u>.
+    An ER diagram of this project is added <u>[**here ➡️**](./resources/ER%20Diagram.md)</u>.
 
 <hr>
 
-#### Implemented <u>Review-Approval Pattern</u> in "Product" Create/Update Operations
+#### ✅ Implemented <u>Review-Approval Pattern</u> in "Product" Table
 
-A sequence diagram is added <u>[**here**](./resources/Sequence%20Diagram.md)</u>.
+A sequence diagram is added <u>[**here ➡️**](./resources/Sequence%20Diagram.md)</u>.
 
 4.  Product record <u>**creation workflow:**</u> (_<small>in Django Admin Panel</small>_)
 
