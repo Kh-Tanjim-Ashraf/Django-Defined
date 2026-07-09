@@ -4,6 +4,12 @@
 
 This is a basic project to practise how Django REST Framework operates. This project consists of backend APIs only & contains 2 models: **Company** & **Employee**.
 
+💡**Note:**
+
+- **API View:** Implemented **APIView** class provided by Django REST Framework. It provides a granular level of controls over _GET, POST, PUT, PATCH & DELETE_ APIs.
+
+- **Serializer:** Implemented **ModelSerializer** to serialize the HTTP Requests & Responses.
+
 ## How to Setup
 
 1. Create a Python virtual environment.
