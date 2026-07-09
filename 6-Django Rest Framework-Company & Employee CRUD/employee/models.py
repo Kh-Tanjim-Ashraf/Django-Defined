@@ -6,3 +6,6 @@ class Employee(models.Model):
     company = models.ForeignKey(Company, related_name='employees', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=16)
+
+    def __str__(self):
+        return self.name
