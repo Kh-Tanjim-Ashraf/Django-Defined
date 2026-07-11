@@ -72,10 +72,11 @@ Execute the following steps to successfully run this project:
 
 ## Authentication APIs
 
-| Method |      Endpoint       | Description        |
-| ------ | :-----------------: | ------------------ |
-| POST   |     /api/token/     | Retrieve all books |
-| POST   | /api/token/refresh/ | Create a new book  |
+| Method |    Endpoint    | Description                              |
+| ------ | :------------: | ---------------------------------------- |
+| POST   | /api/register/ | Register a new user                      |
+| POST   |  /api/login/   | Login and obtain access & refresh tokens |
+| POST   | /api/refresh/  | Obtain new refresh & access tokens       |
 
 ## Book APIs
 
