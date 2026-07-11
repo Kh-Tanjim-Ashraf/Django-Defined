@@ -15,6 +15,30 @@ class:
 
 # Project Setup Instructions
 
+1. Create a Python virtual environment.
+
+   > python -m venv env
+
+2. Activate the virtual environment.
+
+   > **Bash:** source env/Scripts/activate
+
+3. Install the required packages mentioned in the [<u>requirements.txt</u>](./requirements.txt) file.
+
+   > pip install -r requirements.txt
+
+4. Execute database migration & run the server by executing the `server.sh` shell script file.
+
+   > bash server.sh
+
+💡 **Note:** The server will start at [http://127.0.0.1:8080](http://127.0.0.1:8080). The shell script (_server.sh_) file execute the following commands chronologically.
+
+> python manage.py makemigrations
+
+> python manage.py migrate
+
+> python manage.py runserver 8080
+
 # Required Packages
 
 The following Python packages are required:
@@ -32,24 +56,25 @@ This packages are denoted inside the [<u>requirements.txt</u>](./requirements.tx
 
 Execute the following steps to successfully run this project:
 
-1. Create a Python virtual environment.
+1. To implement any changes to database after modifying any Django model class.
 
-   > python -m venv env
+   > python manage.py makemigrations
 
-2. Activate the virtual environment.
+   > python manage.py migrate
 
-   > **Bash:** source env/Scripts/activate
+2. To run the "**Book Store API**" server.
 
-3. Install the required packages mentioned in the [<u>requirements.txt</u>](./requirements.txt) file.
-
-   > pip install -r requirements.txt
-
-4. Execute database migration & run the server by executing the `server.sh` shell script file.
-
-   > bash server.sh
-
-💡 **Note:** The server will start at [http://127.0.0.1:8080](http://127.0.0.1:8080)
-
-5. Access the API endpoints enlisted in the ["API Endpoint List"](#api-endpoint-list).
+   > python manage.py runserver 8080
 
 # API Endpoint List
+
+## Book APIs
+
+| Method |    Endpoint     | Description             |
+| ------ | :-------------: | ----------------------- |
+| GET    |   /api/books/   | Retrieve all books      |
+| POST   |   /api/books/   | Create a new book       |
+| GET    | /api/books/<id> | Retrieve a single book  |
+| PUT    | /api/books/<id> | Update a book           |
+| PATCH  | /api/books/<id> | Partially update a book |
+| DELETE | /api/books/<id> | Retrieve a single book  |
