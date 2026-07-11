@@ -47,6 +47,8 @@ The following Python packages are required:
 - Django==6.0.7
 - django-rest-framework==0.1.0
 - djangorestframework==3.17.1
+- djangorestframework_simplejwt==5.5.1
+- PyJWT==2.13.0
 - sqlparse==0.5.5
 - tzdata==2026.3
 
@@ -67,6 +69,13 @@ Execute the following steps to successfully run this project:
    > python manage.py runserver 8080
 
 # API Endpoint List
+
+## Authentication APIs
+
+| Method |      Endpoint       | Description        |
+| ------ | :-----------------: | ------------------ |
+| POST   |     /api/token/     | Retrieve all books |
+| POST   | /api/token/refresh/ | Create a new book  |
 
 ## Book APIs
 
