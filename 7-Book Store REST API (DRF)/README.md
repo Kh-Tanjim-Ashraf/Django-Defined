@@ -88,3 +88,11 @@ Execute the following steps to successfully run this project:
 | PUT    | /api/books/<id> | Update a book           |
 | PATCH  | /api/books/<id> | Partially update a book |
 | DELETE | /api/books/<id> | Retrieve a single book  |
+
+## Filter by Author, Search by Title & Order by Price (Book API)
+
+| Method |            Endpoint             | Description                                                         |
+| ------ | :-----------------------------: | ------------------------------------------------------------------- |
+| GET    | /api/books/?author=J.K. Rowling | Retrieve the books whose author is J.K. Rowling                     |
+| GET    |    /api/books/?search=Harry     | Retrieve the books whose title is Harry                             |
+| GET    |   /api/books/?ordering=price    | Retrieve the books ordered by the `price` column in ascending order |
