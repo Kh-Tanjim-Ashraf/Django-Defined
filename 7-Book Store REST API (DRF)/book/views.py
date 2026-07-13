@@ -5,6 +5,7 @@ from book.serializer import BookSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.db.models import Q
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
 
 
@@ -19,6 +20,7 @@ class BookViewSet(viewsets.ModelViewSet):
     # Unauthenticated user can only read book record(s); On contrast, authenticated user is allowed to create, update & delete record
     permission_classes = [IsAuthenticatedOrReadOnly]
     pagination_class = LargeSetPagination
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     def get_queryset(self):
         q_params = self.request.query_params

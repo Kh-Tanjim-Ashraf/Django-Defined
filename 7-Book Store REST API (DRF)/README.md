@@ -102,3 +102,10 @@ Execute the following steps to successfully run this project:
 | GET    | /api/books/?author=J.K. Rowling | Retrieve the books whose author is J.K. Rowling                     |
 | GET    |    /api/books/?search=Harry     | Retrieve the books whose title is Harry                             |
 | GET    |   /api/books/?ordering=price    | Retrieve the books ordered by the `price` column in ascending order |
+
+## Throttling
+
+Configure basic throttling as follows:
+
+- **Anonymous Users:** 20 requests per minute
+- **Authenticated Users:** 50 requests per minute

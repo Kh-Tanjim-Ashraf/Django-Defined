@@ -122,9 +122,19 @@ STATIC_URL = 'static/'
 
 
 REST_FRAMEWORK = {
+    # JWT Auth
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    # Throttling
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '20/minute',
+        'user': '50/minute'
+    }
 }
 
 
