@@ -3,15 +3,15 @@
 💡Note: This assignment is part of OSTAD platform's progress evaluation process. This assignment is designed to evaluate your understanding of the following topics covered in
 class:
 
-- API & REST API
-- GET, POST, PUT, PATCH & DELETE Requests
+- [API & REST API](#book-apis)
+- [GET, POST, PUT, PATCH & DELETE Requests](#book-apis)
 - ModelViewSet
-- Token Authentication
-- Filtering
-- Searching
-- Ordering
-- Pagination
-- Throttling
+- [Token Authentication](#authentication-apis)
+- [Filtering](#filter-by-author-search-by-title--order-by-price-book-api)
+- [Searching](#filter-by-author-search-by-title--order-by-price-book-api)
+- [Ordering](#filter-by-author-search-by-title--order-by-price-book-api)
+- [Pagination](#pagination)
+- [Throttling](#throttling)
 
 # Project Setup Instructions
 
