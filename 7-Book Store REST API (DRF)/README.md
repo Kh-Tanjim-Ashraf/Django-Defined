@@ -89,6 +89,12 @@ Execute the following steps to successfully run this project:
 | PATCH  | /api/books/<id> | Partially update a book |
 | DELETE | /api/books/<id> | Retrieve a single book  |
 
+## Pagination
+
+| Method |      Endpoint      | Description              |
+| ------ | :----------------: | ------------------------ |
+| GET    | /api/books/?page=1 | Display 5 books per page |
+
 ## Filter by Author, Search by Title & Order by Price (Book API)
 
 | Method |            Endpoint             | Description                                                         |
