@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.core.mail import send_mail
 
 
 
@@ -14,11 +15,22 @@ class UserManager(BaseUserManager):
             raise ValueError("Phone is required!")
         
         email = self.normalize_email(email)
-        user = self.model(email=email, phone=phone, **extra_fields)
+        user = self.model(
+            email=email, 
+            phone=phone, 
+            **extra_fields
+        )
         user.set_password(password)
         user.save()
 
-        # Background Task: Send email to user about successful email creation
+        # TODO: Background Task: Send email to user about successful email creation
+        send_mail(
+            subject="Welcome!",
+            message="Thank you for registering!",
+            from_email=None,
+            recipient_list=[email],
+            fail_silently=False,
+        )
 
         return user
     
