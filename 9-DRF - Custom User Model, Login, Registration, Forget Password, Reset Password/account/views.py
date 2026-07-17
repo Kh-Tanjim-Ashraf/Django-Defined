@@ -3,11 +3,29 @@ from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from account.serializers import UserRegistrationSerializer, UserLoginSerializer
+from account.serializers import UserRegistrationSerializer, UserLoginSerializer, UserDetailSerializer
 from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.exceptions import AuthenticationFailed
+from rest_framework.permissions import IsAuthenticated
+
 
 
 User = get_user_model()
+
+
+
+def get_tokens_for_user(user):
+    if not user.is_active:
+      raise AuthenticationFailed("User is not active")
+
+    refresh = RefreshToken.for_user(user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }
+
 
 
 class UserRegistration(APIView):
@@ -16,8 +34,12 @@ class UserRegistration(APIView):
         serializer = UserRegistrationSerializer(data=request.data)
 
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            data = {'msg': 'User created successfully'}
+            user = serializer.save()
+            # Required to generate JWT token for a newly registered user since s/he will be automatically redirected to the dashboard/any page where authenticated access is required
+            data = {
+                'message': 'User created successfully',
+                'token': get_tokens_for_user(user)
+            }
             
             return Response(data=data, status=status.HTTP_201_CREATED)
 
@@ -34,9 +56,21 @@ class UserLogin(APIView):
             user = authenticate(email=email, password=password)
 
             if user:
-                data = {'msg': 'Login successful'}
+                data = {
+                    'message': 'Login successful',
+                    'token': get_tokens_for_user(user)
+                }
                 return Response(data=data, status=status.HTTP_200_OK)
             else:
-                data = {'msg': 'Email or password is invalid'}
+                data = {'message': 'Email or password is invalid'}
                 return Response(data=data, status=status.HTTP_404_NOT_FOUND)
-                
+
+
+
+class UserDetail(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserDetailSerializer(instance=request.user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)

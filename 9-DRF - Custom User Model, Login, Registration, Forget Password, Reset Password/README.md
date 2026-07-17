@@ -6,10 +6,10 @@
 
 2. ☑️ Implement custom user interface in admin panel
 
-3. Registration API
+3. ☑️ Registration API
 
-4. Login API
-   - Token refresh API
+4. ☑️ Login API
+   - ☑️ Token refresh API
 
 5. Password change API
 
