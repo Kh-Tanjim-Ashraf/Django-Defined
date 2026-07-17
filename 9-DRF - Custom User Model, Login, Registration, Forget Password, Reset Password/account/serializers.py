@@ -24,3 +24,14 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         validated_data.pop('password2')
 
         return User.objects.create_user(**validated_data)
+
+
+
+class UserLoginSerializer(serializers.ModelSerializer):
+
+    # Since the `email` field of `User` model raises unique email error if an already existing email is passed from the client, thus an `email` field is explicitly defined here
+    email = serializers.EmailField(max_length=255)
+
+    class Meta:
+        model = User
+        fields = ['email', 'password']
