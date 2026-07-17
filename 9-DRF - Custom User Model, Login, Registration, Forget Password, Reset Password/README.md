@@ -3,13 +3,25 @@
 ## 🎯 Objectives
 
 1. ☑️ Custom user model
+
 2. ☑️ Implement custom user interface in admin panel
+
 3. Registration API
+
 4. Login API
+   - Token refresh API
+
 5. Password change API
+
 6. Froget password API
+
 7. Reset password API
-8. Email Service: Welcome email, Password reset link
+
+8. Email Service:
+   - Welcome email
+
+   - Password reset link email
+
 9. Throttling:
    - Anonymous User: 20 requests/minute
    - Authenticated User: 50 requests/minute

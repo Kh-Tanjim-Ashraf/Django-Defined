@@ -5,24 +5,24 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, phone, password, **kwargs):
+    def create_user(self, email, phone, password=None, password2=None, **extra_fields):
         if not email:
             raise ValueError("Email is required")
         
         if not phone:
             raise ValueError("Phone is required")
 
-        user = self.model(email=email, phone=phone, **kwargs)
+        user = self.model(email=email, phone=phone, **extra_fields)
         user.set_password(password)
         user.save()
 
         return user
 
-    def create_superuser(self, email, phone, password, **kwargs):
-        kwargs.setdefault('is_staff', True)
-        kwargs.setdefault('is_superuser', True)
+    def create_superuser(self, email, phone, password, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
         
-        return self.create_user(email, phone, password, **kwargs)
+        return self.create_user(email, phone, password, **extra_fields)
 
 
 
