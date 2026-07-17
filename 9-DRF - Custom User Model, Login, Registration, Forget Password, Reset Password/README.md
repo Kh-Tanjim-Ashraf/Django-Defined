@@ -11,9 +11,9 @@
 4. ☑️ Login API
    - ☑️ Token refresh API
 
-5. Password change API
+5. ☑️ Password change API
 
-6. Froget password API
+6. Forget password API
 
 7. Reset password API
 

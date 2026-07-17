@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from account.serializers import UserRegistrationSerializer, UserLoginSerializer, UserDetailSerializer
+from account.serializers import UserRegistrationSerializer, UserLoginSerializer, UserDetailSerializer, UserPasswordUpdateSerializer
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
@@ -74,3 +74,19 @@ class UserDetail(APIView):
         serializer = UserDetailSerializer(instance=request.user)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+
+class UserPasswordUpdate(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = UserPasswordUpdateSerializer(
+            data=request.data, 
+            context={'user': request.user}
+        )
+
+        if serializer.is_valid(raise_exception=True):
+            data = {'message': 'Password updated'}
+
+            return Response(data=data, status=status.HTTP_200_OK)

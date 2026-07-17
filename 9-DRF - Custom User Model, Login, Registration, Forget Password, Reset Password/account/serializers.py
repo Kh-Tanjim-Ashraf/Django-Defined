@@ -43,3 +43,33 @@ class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'email', 'phone', 'is_active', 'is_superuser']
+
+
+
+class UserPasswordUpdateSerializer(serializers.ModelSerializer):
+
+    old_password = serializers.CharField(max_length=255)
+    password1 = serializers.CharField(max_length=255)
+    password2 = serializers.CharField(max_length=255)
+
+    class Meta:
+        model = User
+        fields = ['old_password', 'password1', 'password2']
+    
+    def validate(self, attrs):
+        old_password = attrs.get('old_password')
+        password1 = attrs.get('password1')
+        password2 = attrs.get('password2')
+        user = self.context.get('user')
+
+        # Cross-check old password
+        if not user.check_password(old_password):
+            raise serializers.ValidationError("Invalid current pasword")
+
+        if password1 != password2:
+            raise serializers.ValidationError("The two passwords didn't match")
+        
+        user.set_password(password1)
+        user.save()
+        
+        return attrs
