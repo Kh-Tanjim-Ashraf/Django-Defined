@@ -2,8 +2,8 @@
 
 ## 🎯 Objectives
 
-1. Custom user model
-2. Implement custom user interface in admin panel
+1. ☑️ Custom user model
+2. ☑️ Implement custom user interface in admin panel
 3. Registration API
 4. Login API
 5. Password change API
