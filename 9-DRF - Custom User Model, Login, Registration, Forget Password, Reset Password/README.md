@@ -9,3 +9,9 @@
 5. Password change API
 6. Froget password API
 7. Reset password API
+8. Email Service: Welcome email, Password reset link
+9. Throttling:
+   - Anonymous User: 20 requests/minute
+   - Authenticated User: 50 requests/minute
+   - Login API: 20 requests/hour
+   - Registration API: 5 requests/day
