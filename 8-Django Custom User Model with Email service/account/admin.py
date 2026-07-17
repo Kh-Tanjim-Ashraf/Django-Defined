@@ -1,5 +1,30 @@
 from django.contrib import admin
 from account.models import User
+from django.contrib.auth.admin import UserAdmin
 
 
-admin.site.register(User)
+
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+
+    list_display = ['id', 'email', 'phone', 'is_active', 'is_superuser']
+
+    list_filter = ['is_active', 'is_superuser']
+
+    search_fields = ['id', 'email', 'phone']
+
+    ordering = ['id', 'email']
+
+    list_display_links = ['id', 'email']
+
+    add_fieldsets = (
+        (None, {
+            "classes": ("wide",),
+            "fields": (
+                "email",
+                "phone",
+                "password1",
+                "password2",
+            ),
+        }),
+    )

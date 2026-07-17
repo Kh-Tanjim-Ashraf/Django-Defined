@@ -44,6 +44,8 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
+    username = models.CharField(max_length=150, null=True, blank=True)
+
     email = models.EmailField(max_length=255, unique=True)
 
     is_active = models.BooleanField(default=True)
@@ -54,7 +56,7 @@ class User(AbstractUser):
 
     REQUIRED_FIELDS = ['phone']
 
-    object = UserManager()
+    objects = UserManager()
 
     def __str__(self):
         return self.email
