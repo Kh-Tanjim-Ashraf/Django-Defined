@@ -106,7 +106,7 @@ class UserForgetPassowrdSerializer(serializers.Serializer):
 
 # Separate serializer to dedicatedly verify token validation
 class UserPasswordResetTokenValidationSerializer(serializers.Serializer):
-
+    
     uid = serializers.CharField(max_length=10)
     token = serializers.CharField(max_length=50)
 
@@ -124,5 +124,28 @@ class UserPasswordResetTokenValidationSerializer(serializers.Serializer):
         
         # Stored the user-record since the child-serializer-class will utilize this record to update a new password against this record
         self.context['user'] = user
+
+        return attrs
+
+
+
+class UserPasswordResetConfirmSerializer(UserPasswordResetTokenValidationSerializer):
+
+    password1 = serializers.CharField(max_length=255)
+    password2 = serializers.CharField(max_length=255)
+
+    def validate(self, attrs):
+        # `uid` & `token` is injected into the request.data dictionary from the `POST` api-endpoint
+
+        # Still validate the token from the parent serializer class
+        attrs = super().validate(attrs)
+
+        if attrs.get('password1') != attrs.get('password2'):
+            raise serializers.ValidationError("The two passwords didn't match")
+        
+        # Access the user-record from the parent serializer class
+        user = self.context.get('user')
+        user.set_password(attrs.get('password1'))
+        user.save()
 
         return attrs
