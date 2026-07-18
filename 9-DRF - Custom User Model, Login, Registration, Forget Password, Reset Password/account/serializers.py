@@ -1,8 +1,14 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.conf import settings
+
 
 
 User = get_user_model()
+
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -72,4 +78,26 @@ class UserPasswordUpdateSerializer(serializers.ModelSerializer):
         user.set_password(password1)
         user.save()
         
+        return attrs
+
+
+
+class UserForgetPassowrdSerializer(serializers.Serializer):
+
+    email = serializers.EmailField(max_length=255)
+
+    def validate(self, attrs):
+        if not User.objects.filter(email=attrs.get('email')).exists():
+            raise serializers.ValidationError("No account is associated with this email address")
+
+        user = User.objects.get(email=attrs.get('email'))
+
+        # Build the magic password reset link
+        uid = urlsafe_base64_encode(force_bytes(user.id))
+        token = default_token_generator.make_token(user)
+        link = f"{settings.FRONTEND_URL}/reset-password/{uid}/{token}"
+        
+        # TODO: Send email to user's mailbox
+        print("magic link:", link)
+
         return attrs

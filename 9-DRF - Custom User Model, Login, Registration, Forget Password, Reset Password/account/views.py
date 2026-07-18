@@ -3,7 +3,13 @@ from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from account.serializers import UserRegistrationSerializer, UserLoginSerializer, UserDetailSerializer, UserPasswordUpdateSerializer
+from account.serializers import (
+    UserRegistrationSerializer, 
+    UserLoginSerializer, 
+    UserDetailSerializer, 
+    UserPasswordUpdateSerializer,
+    UserForgetPassowrdSerializer
+)
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
@@ -89,4 +95,16 @@ class UserPasswordUpdate(APIView):
         if serializer.is_valid(raise_exception=True):
             data = {'message': 'Password updated'}
 
+            return Response(data=data, status=status.HTTP_200_OK)
+
+
+
+class UserForgetPassowrd(APIView):
+    # TODO: Throttling required for the anon users
+
+    def post(self, request):
+        serializer = UserForgetPassowrdSerializer(data=request.data)
+
+        if serializer.is_valid(raise_exception=True):
+            data = {'message': 'A password reset link is send to you email address. Please check your inbox or spam'}
             return Response(data=data, status=status.HTTP_200_OK)
