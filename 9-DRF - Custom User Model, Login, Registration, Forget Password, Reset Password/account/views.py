@@ -8,7 +8,8 @@ from account.serializers import (
     UserLoginSerializer, 
     UserDetailSerializer, 
     UserPasswordUpdateSerializer,
-    UserForgetPassowrdSerializer
+    UserForgetPassowrdSerializer,
+    UserPasswordResetTokenValidationSerializer
 )
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -108,3 +109,24 @@ class UserForgetPassowrd(APIView):
         if serializer.is_valid(raise_exception=True):
             data = {'message': 'A password reset link is send to you email address. Please check your inbox or spam'}
             return Response(data=data, status=status.HTTP_200_OK)
+
+
+
+class UserPasswordReset(APIView):
+
+    # Select different serializer based on method requests
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return UserPasswordResetTokenValidationSerializer
+
+    # For validating token; Response immediately if invalid so that the frontend can show this error message beforehand rather than showing that after submitting the password & confirm passwords into `POST` request
+    def get(self, request, uid, token):
+        serializer = self.get_serializer_class()(data={'uid': uid, 'token': token})
+
+        if serializer.is_valid(raise_exception=True):
+            data = {'message': 'Token is valid. Proceed to reset password'}
+            return Response(data=data, status=status.HTTP_200_OK)
+
+    # Still validates token, but updates the user password this time 
+    def post(self, request, uid, token):
+        pass

@@ -95,9 +95,34 @@ class UserForgetPassowrdSerializer(serializers.Serializer):
         # Build the magic password reset link
         uid = urlsafe_base64_encode(force_bytes(user.id))
         token = default_token_generator.make_token(user)
-        link = f"{settings.FRONTEND_URL}/reset-password/{uid}/{token}"
+        link = f"{settings.FRONTEND_URL}/reset-password/{uid}/{token}/"
         
         # TODO: Send email to user's mailbox
         print("magic link:", link)
+
+        return attrs
+
+
+
+# Separate serializer to dedicatedly verify token validation
+class UserPasswordResetTokenValidationSerializer(serializers.Serializer):
+
+    uid = serializers.CharField(max_length=10)
+    token = serializers.CharField(max_length=50)
+
+    def validate(self, attrs):
+        # Validate user
+        uid = urlsafe_base64_decode(attrs.get('uid'))
+        if not User.objects.filter(id=uid).exists():
+            raise serializers.ValidationError("Invalid user ID")
+            
+        user = User.objects.get(id=uid)
+        
+        # Validate token
+        if not default_token_generator.check_token(user, attrs.get('token')):
+            raise serializers.ValidationError("Token is invalid or expired")
+        
+        # Stored the user-record since the child-serializer-class will utilize this record to update a new password against this record
+        self.context['user'] = user
 
         return attrs
